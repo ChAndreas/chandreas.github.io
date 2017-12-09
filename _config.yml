@@ -1,0 +1,17 @@
+permalink:           pretty
+title:               Andreas Christoforou
+tagline:             Linux Engineer
+url: https://chandreas.github.io
+baseurl:             ""
+sass:
+  sass_dir:          _sass
+  style:            :compressed
+author:
+  name:              Andreas Christoforou
+version:             2.0.0
+twitter_username: Andreas_ch_
+github_username: chandreas
+email: andreasch@fedoraproject.org
+pages_list:
+    home:		'/'
+    posts:              '/posts'

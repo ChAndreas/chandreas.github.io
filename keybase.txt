@@ -1,0 +1,55 @@
+==================================================================
+https://keybase.io/andreasch
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://chandreas.github.io
+  * I am andreasch (https://keybase.io/andreasch) on keybase.
+  * I have a public key ASD53421sbcJnPsDokMNxH1guFRLMSgnEVTQh0D_RnB0pQo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "01012543ad2414155ea53cda174e7ab3de5522b86b57df386f6e7b08086bbf064a220a",
+      "host": "keybase.io",
+      "kid": "0120f9df8db5b1b7099cfb03a2430dc47d60b8544b3128271154d08740ff467074a50a",
+      "uid": "4dd67fcf2ac09619830bfc10c4250819",
+      "username": "andreasch"
+    },
+    "merkle_root": {
+      "ctime": 1506163977,
+      "hash": "9fded506c2816b09024c7ba0bc92bc9d548ed564a407e5735e9deafb246401f24ba49009e12cecde84f923e41d53c798cba1b7c533ddc573d38a419782dcc7a1",
+      "hash_meta": "a362ba502b9207f5343968719c930cc1642cf9d8e920deb10ef1923c784871b7",
+      "seqno": 1447790
+    },
+    "service": {
+      "hostname": "chandreas.github.io",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "1.0.31"
+  },
+  "ctime": 1506164011,
+  "expire_in": 504576000,
+  "prev": "6357e40122f3250540e3ad4d3b2d043a4aab19bf23d33af4edf2e73562f9220b",
+  "seqno": 10,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEg+d+NtbG3CZz7A6JDDcR9YLhUSzEoJxFU0IdA/0ZwdKUKp3BheWxvYWTFA017ImJvZHkiOnsia2V5Ijp7ImVsZGVzdF9raWQiOiIwMTAxMjU0M2FkMjQxNDE1NWVhNTNjZGExNzRlN2FiM2RlNTUyMmI4NmI1N2RmMzg2ZjZlN2IwODA4NmJiZjA2NGEyMjBhIiwiaG9zdCI6ImtleWJhc2UuaW8iLCJraWQiOiIwMTIwZjlkZjhkYjViMWI3MDk5Y2ZiMDNhMjQzMGRjNDdkNjBiODU0NGIzMTI4MjcxMTU0ZDA4NzQwZmY0NjcwNzRhNTBhIiwidWlkIjoiNGRkNjdmY2YyYWMwOTYxOTgzMGJmYzEwYzQyNTA4MTkiLCJ1c2VybmFtZSI6ImFuZHJlYXNjaCJ9LCJtZXJrbGVfcm9vdCI6eyJjdGltZSI6MTUwNjE2Mzk3NywiaGFzaCI6IjlmZGVkNTA2YzI4MTZiMDkwMjRjN2JhMGJjOTJiYzlkNTQ4ZWQ1NjRhNDA3ZTU3MzVlOWRlYWZiMjQ2NDAxZjI0YmE0OTAwOWUxMmNlY2RlODRmOTIzZTQxZDUzYzc5OGNiYTFiN2M1MzNkZGM1NzNkMzhhNDE5NzgyZGNjN2ExIiwiaGFzaF9tZXRhIjoiYTM2MmJhNTAyYjkyMDdmNTM0Mzk2ODcxOWM5MzBjYzE2NDJjZjlkOGU5MjBkZWIxMGVmMTkyM2M3ODQ4NzFiNyIsInNlcW5vIjoxNDQ3NzkwfSwic2VydmljZSI6eyJob3N0bmFtZSI6ImNoYW5kcmVhcy5naXRodWIuaW8iLCJwcm90b2NvbCI6Imh0dHBzOiJ9LCJ0eXBlIjoid2ViX3NlcnZpY2VfYmluZGluZyIsInZlcnNpb24iOjF9LCJjbGllbnQiOnsibmFtZSI6ImtleWJhc2UuaW8gZ28gY2xpZW50IiwidmVyc2lvbiI6IjEuMC4zMSJ9LCJjdGltZSI6MTUwNjE2NDAxMSwiZXhwaXJlX2luIjo1MDQ1NzYwMDAsInByZXYiOiI2MzU3ZTQwMTIyZjMyNTA1NDBlM2FkNGQzYjJkMDQzYTRhYWIxOWJmMjNkMzNhZjRlZGYyZTczNTYyZjkyMjBiIiwic2Vxbm8iOjEwLCJ0YWciOiJzaWduYXR1cmUifaNzaWfEQHuwwJopiT3yQzZcp05QUD3o1CZkq2d7l5cWZExvEuwggNKYeYMo+OGBdEiQl9C0cnz5/bqLh8cF1kzizn50IwKoc2lnX3R5cGUgpGhhc2iCpHR5cGUIpXZhbHVlxCCfKQawmem1EqVMD+ms0A7E11FXzuwmsQSyR262qQVJjaN0YWfNAgKndmVyc2lvbgE=
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/andreasch
+
+==================================================================
