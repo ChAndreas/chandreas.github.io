@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Linux Capabilities"
-date:   Wed Sep 14 18:31:51 EEST 2018
+date:   Sat Jan 13 18:31:51 EEST 2018
 ---
 
 **Linux Kernel distinguishes its processes with the following two categories:**
@@ -141,3 +141,9 @@ int main(int argc, char *argv[])
     return 0;
 }
 ```
+
+sources
+
+    https://www.kernel.org/pub/linux/libs/security/linux-privs/kernel-2.2/capfaq-0.2.txt
+    http://man7.org/linux/man-pages/man7/capabilities.7.html
+    http://man7.org/linux/man-pages/man3/cap_get_proc.3.html

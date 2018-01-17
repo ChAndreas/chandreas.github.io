@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Linux Namespaces"
-date:   Wed Sep 15 17:31:51 EEST 2018
+date:   Sun Jan 14 17:31:51 EEST 2018
 ---
 
 Namespaces are a feature on the Linux kernel that isolate and virtualize system resources of a collection of processes.
