@@ -346,3 +346,9 @@ int main(int argc, char *argv[])
 }
 ```
 
+Sources
+
+    https://linux.die.net/man/2/setns
+    https://en.wikipedia.org/wiki/Linux_namespaces
+    http://man7.org/linux/man-pages/man7/namespaces.7.html
+    https://lwn.net/Articles/531114/
