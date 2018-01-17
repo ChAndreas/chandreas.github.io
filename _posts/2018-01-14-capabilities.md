@@ -5,50 +5,50 @@ date:   Sat Jan 13 18:31:51 EEST 2018
 ---
 
 **Linux Kernel distinguishes its processes with the following two categories:**
-
-    1. Privileged Processes: These processes allow the user to bypass all Kernel permission checks.
-    2. Unprivileged Processes: These processes are subject to full permission checks, such as the effective UID, GID, and supplementary group list.
-
+```
+1. Privileged Processes: These processes allow the user to bypass all Kernel permission checks.
+2. Unprivileged Processes: These processes are subject to full permission checks, such as the effective UID, GID, and supplementary group list.
+```
 The goal of capabilities is divide the power of superuser into pieces, such that if a program that has one or more capabilities is compromised, its power to do damage to the system would be less than the same program running with root privilege.
 
 Linux’s thread/process privilege checking is based on capabilities. 
 
 **List of some of the capabilities that are enabled on Linux:**
-
-    CAP_AUDIT_CONTROL - Allows enable and disable kernel auditing.
-    CAP_AUDIT_READ - Allows reading the audit log via a multicast netlink socket.
-    CAP_AUDIT_WRITE - Allows to write records to kernel auditing log.
-    CAP_BLOCK_SUSPEND - Allows the ability to block system suspend.
-    CAP_CHOWN - Allows to make arbitrary changes to file UIDs and GIDs
-    CAP_DAC_OVERRIDE - Allows to bypass file read, write, and execute permission checks.
-    CAP_DAC_READ_SEARCH - Allows to bypass file read permission checks and directory read and execute permission checks.
-    CAP_NET_ADMIN - Allows various  network-related  operations.
-    CAP_NET_RAW - Allows to use of RAW and PACKET sockets.
-    CAP_SETUID - Allows arbitrary manipulations of process UIDs.
-    CAP_SETGID - Allows arbitrary manipulations of process groups id.
-    CAP_SETPCAP - Allows to grant or remove any capability in the caller's permitted capability set to or from any other process.
-    CAP_MKNOD - Allows to create filesystem node 
-    CAP_SYS_MODULE - Allows to load and unload modules
-    CAP_SYS_NICE - Allows change process nice value
-    CAP_SYS_PTRACE - Allows to trace process
-    CAP_SYS_TIME - Allows to set system clock
-    CAP_SYS_CHROOT - Allows to run chroot.
-    CAP_SYS_ADMIN - Allows a range of system administration operation (dangerous capability)
-    CAP_MAC_OVERRIDE - Allows to change mac address.
-    CAP_NET_BIND_SERVICE - Allows to bind privileged ports(less than 1024)
-    CAP_NET_BROADCAST - Allows socket broadcast and listen to multicast.
-    CAP_SETFCAP - Allows to set file capabilities.
-    CAP_SYS_BOOT - Allows to run reboot.
-    CAP_SYS_PACCT - Allows to enable or disable process accounting
-    CAP_SYS_RAWIO - Allows I/O port operation.
-    CAP_KILL - Allows to send kill signals.
-
+```
+CAP_AUDIT_CONTROL - Allows enable and disable kernel auditing.
+CAP_AUDIT_READ - Allows reading the audit log via a multicast netlink socket.
+CAP_AUDIT_WRITE - Allows to write records to kernel auditing log.
+CAP_BLOCK_SUSPEND - Allows the ability to block system suspend.
+CAP_CHOWN - Allows to make arbitrary changes to file UIDs and GIDs
+CAP_DAC_OVERRIDE - Allows to bypass file read, write, and execute permission checks.
+CAP_DAC_READ_SEARCH - Allows to bypass file read permission checks and directory read and execute permission checks.
+CAP_NET_ADMIN - Allows various  network-related  operations.
+CAP_NET_RAW - Allows to use of RAW and PACKET sockets.
+CAP_SETUID - Allows arbitrary manipulations of process UIDs.
+CAP_SETGID - Allows arbitrary manipulations of process groups id.
+CAP_SETPCAP - Allows to grant or remove any capability in the caller's permitted capability set to or from any other process.
+CAP_MKNOD - Allows to create filesystem node 
+CAP_SYS_MODULE - Allows to load and unload modules
+CAP_SYS_NICE - Allows change process nice value
+CAP_SYS_PTRACE - Allows to trace process
+CAP_SYS_TIME - Allows to set system clock
+CAP_SYS_CHROOT - Allows to run chroot.
+CAP_SYS_ADMIN - Allows a range of system administration operation (dangerous capability)
+CAP_MAC_OVERRIDE - Allows to change mac address.
+CAP_NET_BIND_SERVICE - Allows to bind privileged ports(less than 1024)
+CAP_NET_BROADCAST - Allows socket broadcast and listen to multicast.
+CAP_SETFCAP - Allows to set file capabilities.
+CAP_SYS_BOOT - Allows to run reboot.
+CAP_SYS_PACCT - Allows to enable or disable process accounting
+CAP_SYS_RAWIO - Allows I/O port operation.
+CAP_KILL - Allows to send kill signals.
+```
 **There are 3 modes for Capabilities:**
-
-    1. e: Effective - This indicates that the capability is "activated."
-    2. p: Permitted - This indicates that the capability can be used.
-    3. i: Inherited - This indicates that the capability is inherited by child elements/subprocesses and defines which capabilities stay permitted across an exec().
-
+```
+1. e: Effective - This indicates that the capability is "activated."
+2. p: Permitted - This indicates that the capability can be used.
+3. i: Inherited - This indicates that the capability is inherited by child elements/subprocesses and defines which capabilities stay permitted across an exec().
+```
 **Getting/Setting capabilities from userland:**
     
     getcap - get capabilities
