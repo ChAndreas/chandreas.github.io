@@ -9,11 +9,11 @@ Examples of softwares using namespaces are Docker, LXC and Mesos.
 
 There are two essential set of namespaces, label based namespaces and mapping based namespaces.
 
-Label based namespace are used to attach resources to a namespace, example when you want to add a network card on a namespace you will not see it on the host and it will reappear when your remove it from the namespace. The first label based namespace was network namespace. 
+Label based namespace are used to attach resources to a namespace, for example when you want to add a network card on a namespace you will not see it on the host and it will reappear when your remove it from the namespace. The first label based namespace was network namespace. 
 
-Mapping namespaces are used to map resources from parent process to namespace itself, example pid namespace takes the process pid and projects it into the namespace with different pid. Very useful when you want to run a system container and you want to run a service that required init. 
+Mapping namespaces are used to map resources from parent process to namespace itself, for example pid namespace takes the process pid and projects it into the namespace with different pid. Very useful when you want to run a system container and you want to run a service that required init. 
 
-To enable namespaces support on your kernel you must enable if not already the below on your kernel .config file:
+To enable namespaces support on your kernel you must enable if not already the below configs on your kernel .config file:
    
     CONFIG_NAMESPACES
     CONFIG_UTS_NS
@@ -245,9 +245,9 @@ int child_main(void* arg)
 { 
     char *child[] = {
                     "/bin/bash",
-	                "-c",
-		            "id",
-		            NULL,
+	            "-c",
+		    "id",
+		    NULL,
                     };
     execvp(child[0], child);
     return 0;
