@@ -7,7 +7,7 @@ This is a guide how to compile and install 64 bit (aarch64) kernel for the Raspb
 
 Install build tools
 
-	sudo apt-get install build-essential libgmp-dev libmpfr-dev libmpc-dev bc git-core binutils-aarch64-linux-gnu gcc-aarch64-linux-gnu cpp-aarch64-linux-gnu g++-aarch64-linux-gnu
+	sudo apt-get install build-essential libgmp-dev libmpfr-dev libmpc-dev bc git-core binutils-aarch64-linux-gnu gcc-aarch64-linux-gnu cpp-aarch64-linux-gnu g++-aarch64-linux-gnu libncurses-dev
 
 Clone Linux kernel sources
 
