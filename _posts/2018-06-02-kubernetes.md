@@ -11,8 +11,8 @@ Kubernetes is an open-source system for automating deployment, scaling, and mana
 
 	Distro: Ubuntu 16.04
 	Servers: Master
-			 Node Server 1
-			 Node Server 2
+		Node Server 1
+		Node Server 2
 			
 **Disable the swap file on all servers**
 
@@ -21,7 +21,7 @@ Kubernetes is an open-source system for automating deployment, scaling, and mana
 Remove any matching reference found in /etc/fstab
 
 **Install the Docker**
-	
+	```bash
 	apt-get update
 	
 	apt-get install -y apt-transport-https ca-certificates curl software-properties-common
@@ -31,7 +31,7 @@ Remove any matching reference found in /etc/fstab
 	add-apt-repository "deb https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") $(lsb_release -cs) stable"
 	
 	apt-get update && apt-get install -y docker-ce=$(apt-cache madison docker-ce | grep 17.03 | head -1 | awk '{print $3}')
-
+	```
 
 **Install Kubernetes packages**
 
@@ -41,7 +41,7 @@ kubeadm: the command to bootstrap the cluster.
 kubelet: the component that runs on all of the machines in your cluster and does things like starting pods and containers.
 kubectl: the command line util to talk to your cluster.
 
-
+	```bash
 	apt-get update && apt-get install -y apt-transport-https curl
 	
 	curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
@@ -53,26 +53,29 @@ kubectl: the command line util to talk to your cluster.
 	apt-get update
 	
 	apt-get install -y kubelet kubeadm kubectl kubernetes-cni
-	
+	```
 
 **Create the cluster**
 
 We need to create the cluster by initiating the master with kubeadm. Only do this on the master node.
 
 The Kubernetes master is responsible for maintaining the desired state for your cluster.
-
+	```bash
 	sudo kubeadm init --pod-network-cidr=172.16.0.0/16
-
+	````
+	
+	```bash
 	mkdir -p $HOME/.kube
 	sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 	sudo chown $(id -u):$(id -g) $HOME/.kube/config
-
+	```
 	
 Login to the other two nodes which are the worker nodes and use the token to join them to the master node.
 The worker nodes in a cluster are the machines (VMs, physical servers, etc) that run your applications and cloud workflows.
 
+	```bash
 	kubeadm join <ip>:6443 --token <token key> --discovery-token-ca-cert-hash sha256:<key>
-
+	```
 
 Install networking
 
@@ -80,9 +83,11 @@ Only on master execute the following
 	
 Weave NET
 
+	```bash
 	kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
 	curl -SL "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')&env.IPALLOC_RANGE=172.16.0.0/16" | kubectl apply -f -
-
+	```
+	
 Creating Pods, Deployments and Services
 
 **Pod**
@@ -114,7 +119,7 @@ spec:
     mountPath: /usr/share/nginx/html
 ```		
 		
-		kubectl create -f pod.yaml
+	kubectl create -f pod.yaml
 	
 **Deployment**
 
@@ -147,16 +152,14 @@ spec:
         ports:
         - containerPort: 80
 ```					
-
+	
 	kubectl create -f deployment.yaml
 	
 
 Replicas can be changed either by editing the deployment or using scale.	
 	
-
 	kubectl edit deployment nginx
 		
-	
 	kubectl scale --replicas=3 deployment/nginx
 
 
