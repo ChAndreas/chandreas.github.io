@@ -22,7 +22,6 @@ Remove any matching reference found in /etc/fstab
 
 **Install the Docker**
 
-	```console
 	apt-get update
 	
 	apt-get install -y apt-transport-https ca-certificates curl software-properties-common
@@ -32,7 +31,6 @@ Remove any matching reference found in /etc/fstab
 	add-apt-repository "deb https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") $(lsb_release -cs) stable"
 	
 	apt-get update && apt-get install -y docker-ce=$(apt-cache madison docker-ce | grep 17.03 | head -1 | awk '{print $3}')
-	```
 
 **Install Kubernetes packages**
 
@@ -42,7 +40,6 @@ kubeadm: the command to bootstrap the cluster.
 kubelet: the component that runs on all of the machines in your cluster and does things like starting pods and containers.
 kubectl: the command line util to talk to your cluster.
 
-	```console
 	apt-get update && apt-get install -y apt-transport-https curl
 	
 	curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
@@ -54,7 +51,6 @@ kubectl: the command line util to talk to your cluster.
 	apt-get update
 	
 	apt-get install -y kubelet kubeadm kubectl kubernetes-cni
-	```
 
 **Create the cluster**
 
@@ -62,22 +58,16 @@ We need to create the cluster by initiating the master with kubeadm. Only do thi
 
 The Kubernetes master is responsible for maintaining the desired state for your cluster.
 
-	```console
 	sudo kubeadm init --pod-network-cidr=172.16.0.0/16
-	````
 	
-	```console
 	mkdir -p $HOME/.kube
 	sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 	sudo chown $(id -u):$(id -g) $HOME/.kube/config
-	```
 	
 Login to the other two nodes which are the worker nodes and use the token to join them to the master node.
 The worker nodes in a cluster are the machines (VMs, physical servers, etc) that run your applications and cloud workflows.
 
-	```console
 	kubeadm join <ip>:6443 --token <token key> --discovery-token-ca-cert-hash sha256:<key>
-	```
 
 Install networking
 
@@ -85,10 +75,8 @@ Only on master execute the following
 	
 Weave NET
 
-	```console
 	kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
 	curl -SL "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')&env.IPALLOC_RANGE=172.16.0.0/16" | kubectl apply -f -
-	```
 	
 Creating Pods, Deployments and Services
 
