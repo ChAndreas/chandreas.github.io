@@ -69,7 +69,7 @@ The worker nodes in a cluster are the machines (VMs, physical servers, etc) that
 
 	kubeadm join <ip>:6443 --token <token key> --discovery-token-ca-cert-hash sha256:<key>
 
-Install networking
+**Install networking**
 
 Only on master execute the following
 	
@@ -78,7 +78,7 @@ Weave NET
 	kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
 	curl -SL "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')&env.IPALLOC_RANGE=172.16.0.0/16" | kubectl apply -f -
 	
-Creating Pods, Deployments and Services
+**Creating Pods, Deployments and Services**
 
 **Pod**
 
