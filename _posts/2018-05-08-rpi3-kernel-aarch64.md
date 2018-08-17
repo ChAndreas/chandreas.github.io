@@ -20,7 +20,7 @@ Create output folder
 
 Compile kernel
 
-	make O=../out/ ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- rpi3_defconfig
+	make O=../out/ ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- bcmrpi3_defconfig
 	make -j4 O=../out/ ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu-
 	mkdir ../out/out-modules/
 	make O=../out/ ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- INSTALL_MOD_PATH=../out/out-modules/ modules_install
