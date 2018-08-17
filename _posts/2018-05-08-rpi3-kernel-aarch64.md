@@ -11,7 +11,7 @@ Install build tools
 
 Clone Linux kernel sources
 
-	git clone https://github.com/ChAndreas/rpi3-kernel.git
+	git clone https://github.com/raspberrypi/linux.git rpi3-kernel
 	cd rpi3-kernel
 
 Create output folder
