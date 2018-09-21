@@ -18,7 +18,9 @@ New instructions are added which can be used to:
     Authenticate strip a PAC from a pointer
 
 PAC instruction sign pointers become not usable pointer (Pointer + PAC)
+
 AUT instruction authenticate PAC if PAC match the result of the original pointer else the result will be an invalid pointer (fault).
+
 XPAC instruction stip PAC remove authentication and restored to the original pointer
 
 The new PAC instruction can be used to calculate the authentication code and stored within pointer value. The value containing the authentication code cannot be dereferenced directly, since, without the sign-extension bits, it is no longer recognized as a valid address.
