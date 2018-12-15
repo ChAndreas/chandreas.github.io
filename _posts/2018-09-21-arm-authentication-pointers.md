@@ -19,7 +19,7 @@ New instructions are added which can be used to:
 
 PAC instruction sign pointers become not usable pointer (Pointer + PAC)
 
-AUT instruction authenticate PAC, if PAC match the result of the original pointer else the result will be an invalid pointer (fault).
+AUT instruction authenticate PAC if PAC match the result of the original pointer if not the result will be an invalid pointer (fault).
 
 XPAC instruction stip PAC remove authentication and restored to the original pointer
 
