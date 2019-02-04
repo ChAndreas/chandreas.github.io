@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Android Emulator Kernel Debugging"
-date: Mon Jan 28 17:40:51 EEST 2018
+date: Mon Jan 28 17:40:51 EEST 2019
 ---
 
 **Android Emulator Kernel Debugging**
