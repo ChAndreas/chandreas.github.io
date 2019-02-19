@@ -79,21 +79,21 @@ Each exception level has its own stack pointer `SP_EL0`, `SP_EL1`, `SP_EL2` and 
 
     S0-S7   arguments and return value
     S8-S15	Callee saved register
-	S16-S15 Corrupitble registers
+	S16-S15 Corruptible registers
 	S24-S31 Corruptible registers
 
 64 bit SIMD registers
 
 	D0-D7   arguments and return value
 	D8-D15	Callee saved register
-	D16-D15 Corrupitble registers
+	D16-D15 Corruptible registers
 	D24-D31 Corruptible registers
 
 128 bit SIMD registers
 
     V0-V7   arguments and return value
     V8-V15	Callee saved register
-	V16-V15 Corrupitble registers
+	V16-V15 Corruptible registers
 	V24-V31 Corruptible registers
 
 **The PC (program counter) is not a general purpose register, and cannot be directly accessed by most instructions.**
@@ -117,7 +117,6 @@ ARMv8-A exceptions allows that will interrupt the processor and change the contr
 In ARMv8, a new exception model has been introduced which defines the concept of exception levels.
 When an exception occurs, the processor branches to an exception vector table and runs the corresponding handler. In ARMv8, each exception level has its own exception vector table.
 
-Example when an synchronous exception is set from EL0 is set, the handler at `VBAR_EL1 +0x400` will execute to handle the exception.
 	
 | Offset from VBAR_EL1 | Exception type | Exception set level |
 |---------------------------|-------------|--------------|
