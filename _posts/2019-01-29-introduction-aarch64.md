@@ -56,20 +56,6 @@ General purpose Registers
     XZR	64-bits	Zero register (Reads as 0, writes are ignored, a way to ignore results)
     SP	64-bits Stack pointer
 
-**Data Types**
-
-    Byte	        8 bits
-    Half Word       16 bits
-    Word            32 bits
-    Double Word	64 bits
-    Quad Word	128 bits
-
-**ARM Assembler Conventions**
-     
-    #N    decimal
-    0xN   hexadecimal integer
-    0bN   binary intege
-    
     X0 – X7    arguments and return value
     X8 – X18   temporary registers caller-saved
     X19 – X28  callee-saved registers
