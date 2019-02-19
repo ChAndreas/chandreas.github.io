@@ -210,7 +210,7 @@ Example
 	MRS x0, TTBR0_EL1 ; Move TTBR0_EL1 into x0
 	MSR TTBR0_EL1, x0 ; Move x0 into TTBR0_EL1
 
-You can find more instruction on following PDF
+You can find more instructions on the following PDF
 
 [https://courses.cs.washington.edu/courses/cse469/18wi/Materials/arm64.pdf]
 
