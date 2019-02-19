@@ -1,8 +1,7 @@
-
 ---
 layout: post
-title: "Introduction to arm64 Architecture"
-date: Tue Jan 29 17:31:51 EEST 2019
+title: "Introduction to AArch64 Architecture"
+date:	Tue Jan 29 17:31:51 EEST 2019
 ---
 
 **ARM**
