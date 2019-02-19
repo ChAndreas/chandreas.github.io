@@ -212,7 +212,7 @@ Example
 
 You can find more instructions on the following PDF
 
-[https://courses.cs.washington.edu/courses/cse469/18wi/Materials/arm64.pdf]
+[ARMv8 A64 Quick Reference](https://courses.cs.washington.edu/courses/cse469/18wi/Materials/arm64.pdf)
 
 
 **AArch64 MMU**
