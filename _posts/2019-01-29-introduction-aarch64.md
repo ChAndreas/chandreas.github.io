@@ -110,7 +110,7 @@ Each exception level has its own stack pointer `SP_EL0`, `SP_EL1`, `SP_EL2` and 
 	V16-V15 Corrupitble registers
 	V24-V31 Corruptible registers
 
-** The PC (program counter) is not a general purpose register, and cannot be directly accessed by most instructions.**
+**The PC (program counter) is not a general purpose register, and cannot be directly accessed by most instructions.**
 
 You can use ADR to get the the address of a PC relative offset
 
@@ -152,7 +152,7 @@ Example when an synchronous exception is set from EL0 is set, the handler at `VB
 |+0x700|FIQ/vFIQ|"|
 |+0x780|SError/vSError|"|
 
-Example on Linux Kernel el1_sync which is 
+Example on Linux Kernel el1_sync
 ```
 el1_sync:
  kernel_entry 1
