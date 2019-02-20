@@ -37,43 +37,40 @@ How to build chromium for Android with Hardening Patches.
 
 **Setting up the build**
 
-   mkdir -p out/Default
+	mkdir -p out/Default
+	
+	cat <<EOF > out/Default/args.gn
+	target_os = "android"
+	target_cpu = "arm64"
 
-  ```
-  cat <<EOF > out/Default/args.gn
-  target_os = "android"
-  target_cpu = "arm64"
-
-  android_channel = "stable"
-  android_default_version_name = "72.0.3626.105"
-  android_default_version_code = "362607652"
-
-  is_component_build = false
-  is_debug = false
-  is_official_build = true
-  symbol_level = 1
-  fieldtrial_testing_like_official_build = true
-
-  ffmpeg_branding = "Chrome"
-  proprietary_codecs = true
-
-  EOF
-  ```
+	android_channel = "stable"
+	android_default_version_name = "72.0.3626.105"
+	android_default_version_code = "362607652"
+	
+	is_component_build = false
+	is_debug = false
+	is_official_build = true
+	symbol_level = 1
+	fieldtrial_testing_like_official_build = true
+	
+	ffmpeg_branding = "Chrome"
+	proprietary_codecs = true
+	EOF
   
 If you want to build the chromium for debugging or to fuzz with libfuzzer change or add the following
 
 	is_asan=true
-  	is_msan=true
-  	is_ubsan_security=true
-  	is_debug = true
-  	dcheck_always_on = true
-  	is_java_debug = true
-  	is_component_build = true
+	is_msan=true
+	is_ubsan_security=true
+	is_debug = true
+	dcheck_always_on = true
+	is_java_debug = true
+	is_component_build = true
   
 
-GN build configuration.
+GN build configuration
 
-  	gn gen out/Default
+	gn gen out/Default
 
 
 **Build**
@@ -86,11 +83,11 @@ The apk that we have compiled is supported on Devices with minSdkVersion=24 (Nou
 
 for devices with minSdkVersion=19 (KitKat) and above use
 
-  autoninja -C out/Default chrome_public_apk
+	autoninja -C out/Default chrome_public_apk
 
 or for devices with minSdkVersion=21 (Lollipop) and above use
 
-  autoninja -C out/Default chrome_modern_public_apk
+	autoninja -C out/Default chrome_modern_public_apk
 
 **Install to Device**
 
