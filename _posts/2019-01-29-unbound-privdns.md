@@ -36,7 +36,9 @@ How to create your own Private DNS Server for Android 9 running on Docker.
 
 **Unbound Configuration**
 
-```vim unbound.conf```
+```
+vim unbound.conf
+```
 
 Inside, paste the following script:
 
@@ -92,7 +94,9 @@ remote-control:
 
 **CMD Script**
 
-```vim unbound.sh```
+```
+vim unbound.sh
+```
 
 ```bash
 #!/bin/bash
@@ -101,7 +105,9 @@ remote-control:
 
 **Dockerfile**
 
-```vim Dockerfile```
+```
+vim Dockerfile
+```
 
 Inside, paste the following script:
 
@@ -152,7 +158,9 @@ CMD ["/unbound.sh"]
 
 **Docker Compose**
 
-```vim docker-compose.yml```
+```
+vim docker-compose.yml
+```
 
 Inside, paste the following script:
 
