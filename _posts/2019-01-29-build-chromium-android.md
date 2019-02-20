@@ -8,12 +8,11 @@ How to build chromium for Android with Hardening Patches.
 
 **Download Tools**
 
-  sudo apt install python git
-  
+  	sudo apt install python git
 	git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
 	export PATH="$PATH:/path/to/depot_tools"
 
-**Cet Chromium Project**
+**Get Chromium Project**
 
 	mkdir chromium
 	cd chromium
