@@ -62,18 +62,18 @@ How to build chromium for Android with Hardening Patches.
   
 If you want to build the chromium for debugging or to fuzz with libfuzzer change or add the following
 
-  is_asan=true
-  is_msan=true
-  is_ubsan_security=true
-  is_debug = true
-  dcheck_always_on = true
-  is_java_debug = true
-  is_component_build = true
+	is_asan=true
+  	is_msan=true
+  	is_ubsan_security=true
+  	is_debug = true
+  	dcheck_always_on = true
+  	is_java_debug = true
+  	is_component_build = true
   
 
 GN build configuration.
 
-  gn gen out/Default
+  	gn gen out/Default
 
 
 **Build**
