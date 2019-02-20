@@ -7,8 +7,8 @@ date:	Tue Jan 29 17:32:51 EEST 2019
 How to build chromium for Android with Hardening Patches.
 
 **Download Tools**
-
-  	sudo apt install python git
+	
+	sudo apt install python git
 	git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
 	export PATH="$PATH:/path/to/depot_tools"
 
