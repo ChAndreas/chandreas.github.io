@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Android Chromium Build"
+title:  "Building Chromium for Android"
 date:	Tue Jan 29 17:32:51 EEST 2019
 ---
 
