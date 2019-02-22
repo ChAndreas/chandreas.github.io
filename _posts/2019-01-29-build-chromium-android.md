@@ -94,8 +94,7 @@ or for devices with minSdkVersion=21 (Lollipop) and above use
 
 **Running to test**
 
-	out/Default/bin/content_shell_apk launch [--args='--foo --bar'] http://example.com
-	out/Default/bin/monochrome_public_apk launch [--args='--foo --bar'] http://example.com
+	out/Default/bin/monochrome_public_apk launch http://google.com
 	
 **Logging and debugging**
 
@@ -107,7 +106,6 @@ Debugging Java and c/c++ code
 
 C/C++ Debugger
 
-	out/Default/bin/content_shell_apk gdb
 	out/Default/bin/monochrome_public_apk gdb
 
 Java Debugger
