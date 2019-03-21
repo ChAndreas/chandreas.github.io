@@ -35,7 +35,7 @@ EL1 - This is privileged and is used for running an OS Kernel like Linux.
 
 EL2 - This has a higher level of privilege and can be used to run a hypervisor.
 
-EL3 - This is the highest level off privilege and is used to control (and protect) access to TrustZone.
+EL3 - This is the highest level of privilege and is used to control (and protect) access to TrustZone.
 
 ARMv8-A provides two security states, Secure and Non-secure. The Non-secure state is also referred to as the Normal World. This enables an Operating System (OS) to run in parallel with a trusted OS on the same hardware, and provides protection against certain software attacks and hardware attacks.
 EL3 is always Secure, EL2 is always Non-Secure and EL0/1 can be Secure or Non-Secure
@@ -104,7 +104,7 @@ You can use ADR to get the the address of a PC relative offset
 
 **AArch64 Exceptions**
 
-ARMv8-A exceptions allows that will interrupt the processor and change the control flow of the program. 
+ARMv8-A exceptions interrupt the processor and change the control flow of the program. 
 
     SVC Supervisor Call attempts to access EL1 from EL0. SVC that generates a supervisor call, which are are normally used to request privileged operations or access to system resources from an operating system.
     HVC Hypervisor Call attempts to access EL2
