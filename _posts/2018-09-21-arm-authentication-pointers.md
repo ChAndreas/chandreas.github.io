@@ -25,7 +25,7 @@ XPAC instruction stip PAC remove authentication and restored to the original poi
 
 The new PAC instruction can be used to calculate the authentication code and stored within pointer value. The value containing the authentication code cannot be dereferenced directly, since, without the sign-extension bits, it is no longer recognized as a valid address.
 
-Regaining a usable pointer requires using the AUT instruction, which will recalculate the authentication code and compare it to what is found in te authenticated pointer value. If the two match, the authentication code will be removed otherwise, the pointer will be modified to ensure a fault should it be dereferenced. Thus, any attempt to use a pointer that lacks a proper authentication code will lead to a crash. 
+Regaining a usable pointer requires using the AUT instruction, which will recalculate the authentication code and compare it to what is found in the authenticated pointer value. If the two match, the authentication code will be removed otherwise, the pointer will be modified to ensure a fault should it be dereferenced. Thus, any attempt to use a pointer that lacks a proper authentication code will lead to a crash. 
 
 GCC 7 compiler include basic support for pointer authentication in the form of the -msign-return-address option.
 
