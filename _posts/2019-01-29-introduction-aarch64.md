@@ -173,18 +173,24 @@ add - arithmetic instrictions
 
 mov - copies one register to another or load a value to a register
 
-	mov x0, x1; copies x1 into x0
-  	mov x0, #5; move 5 to x0 register
+```
+mov x0, x1; copies x1 into x0
+mov x0, #5; move 5 to x0 register
+```
 
 str/ldr - store and load register
 
-	str x0, [x1]; stores X0 to memory addressed pointed by x1.  
- 	ldr x0, [x1]; loads from memory addressed pointed by x1 to X0
+```
+str x0, [x1]; stores X0 to memory addressed pointed by x1.  
+ldr x0, [x1]; loads from memory addressed pointed by x1 to X0
+```
 
 stp/ldp - store and load pair of register
 
-	stp x1, x2, [sp];store x1 at sp and x2 at sp+8
-	ldp x29, x30, [sp]; load x29 and x30 from stack  
+```
+stp x1, x2, [sp];store x1 at sp and x2 at sp+8
+ldp x29, x30, [sp]; load x29 and x30 from stack  
+```
 
 bl/blr - Branch link to register,  jumps to a subroutine and stores the return address to x30 link register
 	
