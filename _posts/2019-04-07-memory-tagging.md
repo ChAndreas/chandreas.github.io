@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "ARMv8.5-A Memory Tagging"
+title: "Memory Tagging"
 date:	Sun Apr 07 17:30:54 EEST 2019
 ---
 
