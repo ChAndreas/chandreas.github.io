@@ -48,12 +48,6 @@ cat /proc/zoneinfo
 
 `ZONE_NORMAL` - This zone contains normal, regularly mapped, pages.
 
-Zone Description Physical Memory
-
-`ZONE_DMA` - DMA-able pages < 16MB
-
-`ZONE_NORMAL` - Normally addressable pages 16–896MB
-
 **Linux Kernel Memory Management APIs**
 
 **kmalloc()**
@@ -83,9 +77,9 @@ Softirq - `GFP_ATOMIC`
 
 Tasklet -  `GFP_ATOMIC`
 
-DMA-able memory which can sleep - (`GFP_DMA` | `GFP_KERNEL`)
+DMA-able memory which can sleep - (`GFP_DMA | GFP_KERNEL`)
 
-DMA-able memory which cannot sleep - (`GFP_DMA` | `GFP_ATOMIC`)
+DMA-able memory which cannot sleep - (`GFP_DMA | GFP_ATOMIC`)
 
 *The `GFP_DMA` flag is used to specify that the allocator must satisfy the request from `ZONE_DMA`. This flag is used by device drivers, which need DMA-able memory for their devices, normally, you combine this flag with the `GFP_ATOMIC` or `GFP_KERNEL` flag.*
 
