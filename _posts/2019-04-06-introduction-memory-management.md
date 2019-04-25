@@ -18,7 +18,11 @@ A page table is the data structure used by a virtual memory system in a operatin
 
 **Page Faults**
 
-When a process accesses a region of memory that is not mapped or the processes has insufficient permissions for the address requested the MMU will generate a page fault exception. 
+When a process accesses a region of memory that is not mapped or the processes has insufficient permissions for the address requested the MMU will generate a page fault exception.
+
+**Page allocator**
+
+The Linux page allocator is based on a buddy allocator, implemented in mm/page_alloc.c. This allocator tracks free pages of different orders. An order n page is 2<sup>12+n</sup> bytes big and is aligned to a 2<sup>12+n</sup> byte boundary (assuming that the system is using a native page size of 2<sup>12</sup> bytes).
 
 **Translation Lookaside Buffer (TLB)**
 
