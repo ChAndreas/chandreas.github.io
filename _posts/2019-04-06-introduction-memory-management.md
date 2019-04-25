@@ -22,7 +22,7 @@ When a process accesses a region of memory that is not mapped or the processes h
 
 **Page allocator**
 
-The Linux page allocator is based on a buddy allocator, implemented in mm/page_alloc.c. This allocator tracks free pages of different orders. An order n page is 2<sup>12+n</sup> bytes big and is aligned to a 2<sup>12+n</sup> byte boundary (assuming that the system is using a native page size of 2<sup>12</sup> bytes).
+The Linux page allocator is based on a buddy allocator, implemented in `mm/page_alloc.c` and tracks the free pages of different orders.
 
 **Translation Lookaside Buffer (TLB)**
 
