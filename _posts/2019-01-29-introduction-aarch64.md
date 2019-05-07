@@ -25,7 +25,7 @@ ARMv8 has two execution modes A64 – 64-bit registers and memory accesses, new 
 
 **AArch64 Privilege model**
 
-There are 4 Privilege levels: PL3 – highest, PL0 – lowest
+There are 4 Privilege levels: EL3 – highest, EL0 – lowest
 
 In ARMv8, the four privilege levels extend this to provide support for virtualization and security
 
