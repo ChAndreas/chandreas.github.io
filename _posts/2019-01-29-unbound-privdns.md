@@ -116,8 +116,8 @@ FROM ubuntu:18.04
 MAINTAINER Andreas Christoforou
 
 ENV DEBIAN_FRONTEND noninteractive
-ENV UNBOUND_VERSION 1.9.0
-ENV UNBOUND_SHA256 415af94b8392bc6b2c52e44ac8f17935cc6ddf2cc81edfb47c5be4ad205ab917
+ENV UNBOUND_VERSION 1.9.2
+ENV UNBOUND_SHA256 6f7acec5cf451277fcda31729886ae7dd62537c4f506855603e3aa153fcb6b95
 
 RUN set -x \
 	&& apt update \
@@ -139,12 +139,12 @@ RUN set -x \
 	&& rm -rf /unbound-${UNBOUND_VERSION}.tar.gz \
 	&& rm -rf unbound-* \
 	&& rm -rf /var/lib/apt/lists/* \
-  && apt-get clean
+	&& apt-get clean
 
-ADD ./unbound.conf /etc/unbound/unbound.conf
-ADD ./privkey.pem /etc/unbound/privkey.pem
-ADD ./fullchain.pem /etc/unbound/fullchain.pem
-ADD ./unbound.sh /unbound.sh
+COPY ./unbound.conf /etc/unbound/unbound.conf
+COPY ./privkey.pem /etc/unbound/privkey.pem
+COPY ./fullchain.pem /etc/unbound/fullchain.pem
+COPY ./unbound.sh /unbound.sh
 
 WORKDIR /etc/unbound/
 
@@ -154,7 +154,7 @@ CMD ["/unbound.sh"]
 ```	
 **Build Image**
 
-	docker build -t unbound-tls:1.9.0 .
+	docker build -t unbound-tls:1.9.2 .
 
 **Docker Compose**
 
@@ -168,11 +168,11 @@ Inside, paste the following script:
 version: '3'
 services:
   unbound-tls:
-    image: unbound-tls:1.9.0
+    image: unbound-tls:1.9.2
     container_name: unbound-tls
+    restart: always
     ports:
       - "853:853"
-    restart: always
 ```
 
 **Run image**
