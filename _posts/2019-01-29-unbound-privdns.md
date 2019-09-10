@@ -45,10 +45,12 @@ Inside, paste the following script:
 ```
 server:
         username: "unbound"
-        chroot: /etc/unbound/
+        chroot: ""
         directory: /etc/unbound/
         pidfile: "/var/run/unbound.pid"
-        use-syslog: yes
+        logfile: "/var/log/unbound.log"
+        verbosity: 1
+        log-queries: yes
         num-threads: 4
         verbosity: 2
         interface: 0.0.0.0@853
@@ -116,8 +118,8 @@ FROM ubuntu:18.04
 MAINTAINER Andreas Christoforou
 
 ENV DEBIAN_FRONTEND noninteractive
-ENV UNBOUND_VERSION 1.9.2
-ENV UNBOUND_SHA256 6f7acec5cf451277fcda31729886ae7dd62537c4f506855603e3aa153fcb6b95
+ENV UNBOUND_VERSION 1.9.3
+ENV UNBOUND_SHA256 1b55dd9170e4bfb327fb644de7bbf7f0541701149dff3adf1b63ffa785f16dfa
 
 RUN set -x \
 	&& apt update \
@@ -154,7 +156,7 @@ CMD ["/unbound.sh"]
 ```	
 **Build Image**
 
-	docker build -t unbound-tls:1.9.2 .
+	docker build -t unbound-tls:1.9.3 .
 
 **Docker Compose**
 
@@ -168,7 +170,7 @@ Inside, paste the following script:
 version: '3'
 services:
   unbound-tls:
-    image: unbound-tls:1.9.2
+    image: unbound-tls:1.9.3
     container_name: unbound-tls
     restart: always
     ports:
