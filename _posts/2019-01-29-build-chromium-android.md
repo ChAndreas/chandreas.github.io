@@ -18,7 +18,7 @@ How to build chromium for Android with Hardening Patches.
 	cd chromium
 	fetch --nohooks android
 	echo "target_os = [ 'android' ]" >> ./gclient
-	gclient sync --with_branch_heads -r 72.0.3626.105 --jobs 32
+	gclient sync --with_branch_heads -r 76.0.3809.132 --jobs 32
 
 **Hardening Patches(Credits to Daniel Micay)**
 
@@ -41,19 +41,19 @@ How to build chromium for Android with Hardening Patches.
 	cat <<EOF > out/Default/args.gn
 	target_os = "android"
 	target_cpu = "arm64"
-
 	android_channel = "stable"
-	android_default_version_name = "72.0.3626.105"
-	android_default_version_code = "362607652"
-	
+	android_default_version_name = "76.0.3809.132"
+	android_default_version_code = "380913252"
 	is_component_build = false
 	is_debug = false
 	is_official_build = true
 	symbol_level = 1
 	fieldtrial_testing_like_official_build = true
-	
 	ffmpeg_branding = "Chrome"
 	proprietary_codecs = true
+	is_cfi = true
+	enable_remoting = false
+	enable_reporting = false
 	EOF
   
 If you want to build the chromium for debugging or to fuzz with libfuzzer change or add the following
