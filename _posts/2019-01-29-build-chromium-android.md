@@ -18,7 +18,7 @@ How to build chromium for Android with Hardening Patches.
 	cd chromium
 	fetch --nohooks android
 	echo "target_os = [ 'android' ]" >> ./gclient
-	gclient sync --with_branch_heads -r 76.0.3809.132 --jobs 32
+	gclient sync -D --with_branch_heads -r 76.0.3809.132 --jobs 32
 
 **Hardening Patches(Credits to Daniel Micay)**
 
