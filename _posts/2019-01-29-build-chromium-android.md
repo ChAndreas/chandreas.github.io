@@ -20,12 +20,6 @@ How to build chromium for Android with Hardening Patches.
 	echo "target_os = [ 'android' ]" >> ./gclient
 	gclient sync -D --with_branch_heads -r 76.0.3809.132 --jobs 32
 
-**Hardening Patches(Credits to Daniel Micay)**
-
-	git clone https://github.com/AndroidHardening/chromium_patches.git
-	cd src
-	git am ../chromium_patches/*.patch
-
 **Install dependencies**
 
 	echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections
