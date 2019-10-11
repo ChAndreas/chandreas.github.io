@@ -65,6 +65,9 @@ GN build configuration
 
 	gn gen out/Default
 
+tmpfs for the build output to reduce the amount of disk writes required.
+
+	mount -t tmpfs -o size=20G,nr_inodes=40k,mode=1777 tmpfs /path/to/out
 
 **Build**
 
