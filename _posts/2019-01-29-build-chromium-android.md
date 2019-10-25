@@ -22,6 +22,7 @@ How to build chromium for Android with Hardening Patches.
 
 **Install dependencies**
 
+	cd src/
 	echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections
 	./build/install-build-deps-android.sh
 	gclient runhooks
@@ -29,6 +30,12 @@ How to build chromium for Android with Hardening Patches.
 	build/linux/sysroot_scripts/install-sysroot.py --arch=amd64
 
 **Setting up the build**
+
+tmpfs for the build output to reduce the amount of disk writes required.
+
+	mount -t tmpfs -o size=20G,nr_inodes=40k,mode=1777 tmpfs /path/to/out
+
+Create args.gn
 
 	mkdir -p out/Default
 	
@@ -64,10 +71,6 @@ If you want to build the chromium for debugging or to fuzz with libfuzzer change
 GN build configuration
 
 	gn gen out/Default
-
-tmpfs for the build output to reduce the amount of disk writes required.
-
-	mount -t tmpfs -o size=20G,nr_inodes=40k,mode=1777 tmpfs /path/to/out
 
 **Build**
 
