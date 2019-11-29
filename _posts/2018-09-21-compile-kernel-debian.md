@@ -8,7 +8,7 @@ date:   Wed Sep 20 16:40:51 EEST 2018
 
     sudo apt-get install build-essential libncurses-dev bison flex libssl-dev libelf-dev ccache
 
-**Donwload Kernel Config hardened check to verify that we will use best practice kernel options for security on our config.**
+**Download Kernel Config hardened check, to verify that we will use the best practice kernel config options for security.**
 
     git clone https://github.com/a13xp0p0v/kconfig-hardened-check.git
 
@@ -25,7 +25,7 @@ date:   Wed Sep 20 16:40:51 EEST 2018
 
     gpg2 --locate-keys torvalds@kernel.org gregkh@kernel.org
 
-**If you see a warning about you can indicate that you choose to trust that key using TOFU.**
+**If you see a warning, you can indicate that you choose to trust that key using TOFU.**
 
     gpg2 --tofu-policy good <RSA key>
 
@@ -37,7 +37,7 @@ date:   Wed Sep 20 16:40:51 EEST 2018
 
     tar xvf linux-5.3.13.tar
 
-**Enter kernel folder.**
+**Enter the kernel folder.**
 
     cd linux-5.3.13 
 
@@ -49,7 +49,7 @@ date:   Wed Sep 20 16:40:51 EEST 2018
 **Check kernel config with kconfig-hardened-check for security.**
     python3 ../kconfig-hardened-check/kconfig-hardened-check.py -c .config
 
-**Make the nessesary changes that you found before with kconfig-hardened-check.**
+**Make the nessesary changes that you found with kconfig-hardened-check.**
 
     make menuconfig
 
