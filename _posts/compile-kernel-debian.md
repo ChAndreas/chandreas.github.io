@@ -58,6 +58,7 @@ date:   Wed Sep 20 14:15:51 EEST 2018
     make -j$(nproc)
 
 **Install Kernel Modules**
+
     make INSTALL_MOD_STRIP=1 modules_install -j$(nproc)
 
 **Install Kernel**
