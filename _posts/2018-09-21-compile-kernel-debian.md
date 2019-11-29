@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Compile Linux Kernel Ubuntu-Debian"
-date:   Wed Sep 20 14:15:51 EEST 2018
+title:  "Compile Linux Kernel (Ubuntu-Debian)"
+date:   Wed Sep 20 16:40:51 EEST 2018
 ---
 
 **Download neccessary packages**
