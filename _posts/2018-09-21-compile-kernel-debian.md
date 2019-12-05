@@ -47,6 +47,7 @@ date:   Wed Sep 20 16:40:51 EEST 2018
     make oldconfig
 
 **Check kernel config with kconfig-hardened-check for security.**
+
     python3 ../kconfig-hardened-check/kconfig-hardened-check.py -c .config
 
 **Make the nessesary changes that you found with kconfig-hardened-check.**
