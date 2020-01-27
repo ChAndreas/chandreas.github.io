@@ -6,7 +6,7 @@ date:   Wed Sep 20 16:40:51 EEST 2018
 
 **Download neccessary packages**
 
-    sudo apt-get install build-essential libncurses-dev bison flex libssl-dev libelf-dev ccache
+    sudo apt-get install build-essential libncurses-dev bison flex libssl-dev libelf-dev bc ccache gcc-8-plugin-dev
 
 **Download Kernel Config hardened check, to verify that we will use the best practice kernel config options for security.**
 
@@ -23,11 +23,11 @@ date:   Wed Sep 20 16:40:51 EEST 2018
 
 **Download gpg key of Greg Kroah-Hartman and Linus Torvalds Linux Maintainers.**
 
-    gpg2 --locate-keys torvalds@kernel.org gregkh@kernel.org
+    gpg --locate-keys torvalds@kernel.org gregkh@kernel.org
 
 **Verify kernel tarball with gpg.**
 
-    gpg2 --verify linux-5.3.13.tar.sign
+    gpg --verify linux-5.3.13.tar.sign
 
 **If everything is OK and you didn't get "BAD signature" output from the "gpg –verify" extract the tarball.**
 
