@@ -43,8 +43,8 @@ Create args.gn
 	target_os = "android"
 	target_cpu = "arm64"
 	android_channel = "stable"
-	android_default_version_name = "76.0.3809.132"
-	android_default_version_code = "380913252"
+	android_default_version_name = "83.0.4103.83"
+	android_default_version_code = "410308300"
 	is_component_build = false
 	is_debug = false
 	is_official_build = true
@@ -53,6 +53,7 @@ Create args.gn
 	ffmpeg_branding = "Chrome"
 	proprietary_codecs = true
 	is_cfi = true
+	enable_gvr_services = false
 	enable_remoting = false
 	enable_reporting = false
 	EOF
