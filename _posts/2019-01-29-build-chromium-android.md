@@ -73,8 +73,11 @@ GN build configuration
 	gn gen out/Default
 
 **Build**
+The following command is used to build Trichrome for Android Q.
 
-The following command is used to build Monochrome, which provides both Chromium and the WebView.
+	ninja -C out/Default/ trichrome_webview_64_32_apk trichrome_chrome_64_32_bundle trichrome_library_64_32_apk
+
+The following command is used to build Monochrome, which provides both Chromium and the WebView for Android N - P
 
 	autoninja -C out/Default monochrome_public_apk
 
