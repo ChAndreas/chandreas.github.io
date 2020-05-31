@@ -74,6 +74,7 @@ GN build configuration
 	gn gen out/Default
 
 **Build**
+
 The following command is used to build Trichrome for Android Q.
 
 	ninja -C out/Default/ trichrome_webview_64_32_apk trichrome_chrome_64_32_bundle trichrome_library_64_32_apk
