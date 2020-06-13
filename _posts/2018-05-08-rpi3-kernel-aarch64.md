@@ -3,7 +3,7 @@ layout: post
 title: "Compile aarch64 Linux kernel Upstream for Raspberry Pi"
 date: Sun May 8 17:31:51 EEST 2018
 ---
-This is a guide how to compile and install 64 bit (aarch64) kernel for the Raspberry pi 3 b or 3 b+.
+This is a guide how to compile and install 64 bit (aarch64) kernel for the Raspberry pi 3 b, 3 b+ or 4.
 
 Install build tools
 
