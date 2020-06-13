@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Compile aarch64 Linux kernel Upstream for Raspberry Pi 3"
+title: "Compile aarch64 Linux kernel Upstream for Raspberry Pi"
 date: Sun May 8 17:31:51 EEST 2018
 ---
 This is a guide how to compile and install 64 bit (aarch64) kernel for the Raspberry pi 3 b or 3 b+.
@@ -33,6 +33,7 @@ Install (plug the sdcard and replace sdX with your device)
 	cp -R arch/arm64/boot/dts/overlays /media/
 	cp arch/arm64/boot/Image /media/kernel8.img
 	cp arch/arm64/boot/dts/broadcom/bcm2710-rpi-3-b.dtb /media/bcm2710-rpi-3-b.dtb
+	echo "arm_64bit=1" >> /media/config.txt
 	echo "kernel=kernel8.img" >> /media/config.txt
 	umount /media
 	mount /dev/sdX2 /media/
