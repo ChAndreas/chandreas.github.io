@@ -4,7 +4,7 @@ title:  "Building Chromium for Android"
 date:	Tue Jan 29 17:32:51 EEST 2019
 ---
 
-How to build chromium for Android with Hardening Patches.
+How to build chromium for Android.
 
 **Download Tools**
 	
@@ -97,7 +97,7 @@ or for devices with minSdkVersion=21 (Lollipop) and above use
 
 	adb install out/Default/apks/MonochromePublic.apk
 
-**Running to test**
+**Running a test**
 
 	out/Default/bin/monochrome_public_apk launch http://google.com
 	
