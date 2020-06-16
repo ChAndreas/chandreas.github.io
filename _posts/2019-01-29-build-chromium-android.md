@@ -18,7 +18,7 @@ How to build chromium for Android.
 	cd chromium
 	fetch --nohooks android
 	echo "target_os = [ 'android' ]" >> ./gclient
-	gclient sync -D --with_branch_heads -r 83.0.4103.83 --jobs 32
+	gclient sync -D --with_branch_heads -r 83.0.4103.101 --jobs 32
 
 **Install dependencies**
 
@@ -43,8 +43,8 @@ Create args.gn
 	target_os = "android"
 	target_cpu = "arm64"
 	android_channel = "stable"
-	android_default_version_name = "83.0.4103.83"
-	android_default_version_code = "410308300"
+	android_default_version_name = "83.0.4103.101"
+	android_default_version_code = "410310100"
 	is_component_build = false
 	is_debug = false
 	is_official_build = true
@@ -63,10 +63,11 @@ If you want to build the chromium for debugging or to fuzz with libfuzzer change
 	is_asan=true
 	is_msan=true
 	is_ubsan_security=true
-	is_debug = true
-	dcheck_always_on = true
-	is_java_debug = true
-	is_component_build = true
+	is_debug=true
+	dcheck_always_on=true
+	is_java_debug=true
+	is_component_build=true
+	use_libfuzzer=true
   
 
 GN build configuration
