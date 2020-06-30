@@ -66,7 +66,7 @@ New System Registers for tagging
 MTE Example
 
 ```bash
-// Compiled with following options -march=armv8.5-a+rng -march=armv8.5-a+memtag -fsanitize=memtag 
+// Compiled with following options -march=armv8.5-a+memtag -fsanitize=memtag 
 // llvm-objdump -d test
 
 0000000100007f04 _main:
