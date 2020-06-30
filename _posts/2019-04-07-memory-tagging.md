@@ -63,36 +63,57 @@ New System Registers for tagging
 
 **Compiler Memory Tagging**
 
-**LLVM HWASAN**
+MTE Example
 
-Memory tagging can be found on CLANG toolchain and is called HWSAN hardware-assisted address sanitizer, and it works on AArch64 because it relies on the Top-Byte-Ignore(TBI) feature with 8-bit tag size and 16-bytes tag granularity. The tag validation is performed by compiler instrumentation during runtime but there is an overhead on cpu and memory.
+```lldb
+// Compiled with following options -march=armv8.5-a+rng -march=armv8.5-a+memtag -fsanitize=memtag 
+// llvm-objdump -d test
 
-*Top-byte ignore (TBI) is a feature introduced with ARMv8 that provides facilities for memory tagging by ignoring the most significant 8 bits of the virtual address.*
+0000000100007f04 _main:
+100007f04: 7f 23 03 d5                 	hint #27
+100007f08: ff 03 01 d1                 	sub	sp, sp, #64
+100007f0c: fd 7b 03 a9                 	stp	x29, x30, [sp, #48]
+100007f10: fd c3 00 91                 	add	x29, sp, #48
+100007f14: 08 00 00 b0                 	adrp	x8, #4096
+100007f18: 08 09 40 f9                 	ldr	x8, [x8, #16]
+100007f1c: 08 01 40 f9                 	ldr	x8, [x8]
+100007f20: a8 83 1f f8                 	stur	x8, [x29, #-8]
+100007f24: 08 00 80 d2                 	mov	x8, #0
+100007f28: e8 13 c8 9a                 	<unknown>
+100007f2c: 08 01 81 91                 	<unknown>
+100007f30: 08 09 20 d9                 	<unknown>
+100007f34: 09 00 80 52                 	mov	w9, #0
+100007f38: 09 01 00 b9                 	str	w9, [x8]
+100007f3c: 08 00 00 90                 	adrp	x8, #0
+100007f40: 08 d1 3e 91                 	add	x8, x8, #4020
+100007f44: ea 03 00 91                 	mov	x10, sp
+100007f48: 48 01 00 f9                 	str	x8, [x10]
+100007f4c: 00 00 00 90                 	adrp	x0, #0
+100007f50: 00 c0 3e 91                 	add	x0, x0, #4016
+100007f54: 13 00 00 94                 	bl	#76 <_printf+0x100007fa0>
+```
 
-Memory Access Example
+If we will check the unknown instructions with llvm machine code we will see the new instructions for Memory tagging
+
+```bash
+echo "0xE8 0x13 0xC8 0x9A" | llvm-mc --disassemble -triple=aarch64 --mattr=+mte -show-encoding
+	.text
+	irg	x8, sp, x8              // encoding: [0xe8,0x13,0xc8,0x9a]
 
 ```
-// clang -O2 --target=aarch64-linux -fsanitize=hwaddress -c main.c
-	
-<func1>:
-   0:	d344dc08	ubfx	x8, x0, #4, #52 // shadow offset
-   4:	39400108	ldrb	w8, [x8] // load shadow tag
-   8:	d378fc09	lsr	x9, x0, #56 // extract address tag
-   c:	6b08013f	cmp	w9, w8 // compare tags
-  10:	54000061	b.ne	1c <foo+0x1c>  // jump on mismatch
-  14:	b9400000	ldr	w0, [x0] // original load
-  18:	d65f03c0	ret
-  1c:	d4212040	brk	#0x902 // trap
+
+```bash
+echo "0x08 0x01 0x81 0x91" | llvm-mc --disassemble -triple=aarch64 --mattr=+mte -show-encoding
+	.text
+        addg	x8, x8, #16, #0           // encoding: [0x08,0x01,0x81,0x91]
 ```
 
-The memory tagging extension is optional in ARMv8.5-A. Compiling with armclang toolchain with option -mmemtag-stack, the compiler uses memory tagging instructions that are not available for architectures without the memory tagging extension.
+```bash
+echo "0x08 0x09 0x20 0xd9" | llvm-mc --disassemble -triple=aarch64 --mattr=+mte -show-encoding
+	.text
+	stg	x8, [x8]                // encoding: [0x08,0x09,0x20,0xd9]
+```
 
-	-mmemtag-stack // enables the generation of stack protection code that uses the memory tagging extension.
-
-The following optional extensions to Armv8.5-A architecture will be supported by GCC version 9 as well
-
-	-march=armv8.5-a+rng // Random Number Generation instructions
-    -march=armv8.5-a+memtag // Memory Tagging Extension
 
 References
 
@@ -100,3 +121,4 @@ References
 	https://developer.arm.com/docs/ddi0596/latest/base-instructions-alphabetic-order
 	http://www.keil.com/support/man/docs/armclang_ref/armclang_ref_lnk1549304794624.htm
 	https://gcc.gnu.org/gcc-9/changes.html
+	https://github.com/llvm-mirror/llvm/blob/1338c14d0676434da021911c8824f00425d4895d/test/MC/AArch64/armv8.5a-mte.s
