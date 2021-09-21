@@ -31,10 +31,6 @@ How to build chromium for Android.
 
 **Setting up the build**
 
-tmpfs for the build output to reduce the amount of disk writes required.
-
-	mount -t tmpfs -o size=20G,nr_inodes=40k,mode=1777 tmpfs /path/to/out
-
 Create args.gn
 
 	mkdir -p out/Default
@@ -43,19 +39,22 @@ Create args.gn
 	target_os = "android"
 	target_cpu = "arm64"
 	android_channel = "stable"
-	android_default_version_name = "83.0.4103.101"
-	android_default_version_code = "410310100"
+	android_default_version_name = "93.0.4577.82"
+	android_default_version_code = "457708200"
 	is_component_build = false
 	is_debug = false
 	is_official_build = true
 	symbol_level = 1
 	fieldtrial_testing_like_official_build = true
+	dfmify_dev_ui = false
+        disable_autofill_assistant_dfm = true
+        disable_tab_ui_dfm = true
 	ffmpeg_branding = "Chrome"
 	proprietary_codecs = true
 	is_cfi = true
 	enable_gvr_services = false
 	enable_remoting = false
-	enable_reporting = false
+	enable_reporting = true
 	EOF
   
 If you want to build the chromium for debugging or to fuzz with libfuzzer change or add the following
