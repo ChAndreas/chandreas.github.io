@@ -47,8 +47,8 @@ Create args.gn
 	symbol_level = 1
 	fieldtrial_testing_like_official_build = true
 	dfmify_dev_ui = false
-        disable_autofill_assistant_dfm = true
-        disable_tab_ui_dfm = true
+	disable_autofill_assistant_dfm = true
+	disable_tab_ui_dfm = true
 	ffmpeg_branding = "Chrome"
 	proprietary_codecs = true
 	is_cfi = true
