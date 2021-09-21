@@ -18,7 +18,7 @@ How to build chromium for Android.
 	cd chromium
 	fetch --nohooks android
 	echo "target_os = [ 'android' ]" >> ./gclient
-	gclient sync -D --with_branch_heads -r 83.0.4103.101 --jobs 32
+	gclient sync -D --with_branch_heads -r 93.0.4577.82 --jobs 32
 
 **Install dependencies**
 
