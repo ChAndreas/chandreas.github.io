@@ -24,8 +24,6 @@ How to build chromium for Android.
 
 **Install dependencies**
 
-	cd src/
-	echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections
 	./build/install-build-deps-android.sh
 
 **Setting up the build**
