@@ -17,17 +17,16 @@ How to build chromium for Android.
 	mkdir chromium
 	cd chromium
 	fetch --nohooks android
-	echo "target_os = [ 'android' ]" >> ./gclient
-	gclient sync -D --with_branch_heads -r 93.0.4577.82 --jobs 32
+	cd src
+	git fetch --tags
+	git checkout 99.0.4844.73
+	gclient sync -D --with_branch_heads --with_tags --jobs 32
 
 **Install dependencies**
 
 	cd src/
 	echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections
 	./build/install-build-deps-android.sh
-	gclient runhooks
-	build/linux/sysroot_scripts/install-sysroot.py --arch=i386
-	build/linux/sysroot_scripts/install-sysroot.py --arch=amd64
 
 **Setting up the build**
 
@@ -39,19 +38,20 @@ Create args.gn
 	target_os = "android"
 	target_cpu = "arm64"
 	android_channel = "stable"
-	android_default_version_name = "93.0.4577.82"
-	android_default_version_code = "457708200"
+	android_default_version_name = "99.0.4844.73"
+	android_default_version_code = "484407300"
 	is_component_build = false
 	is_debug = false
 	is_official_build = true
 	symbol_level = 1
-	fieldtrial_testing_like_official_build = true
+        disable_fieldtrial_testing_config = true
 	dfmify_dev_ui = false
 	disable_autofill_assistant_dfm = true
 	disable_tab_ui_dfm = true
 	ffmpeg_branding = "Chrome"
 	proprietary_codecs = true
 	is_cfi = true
+        use_cfi_cast = true
 	enable_gvr_services = false
 	enable_remoting = false
 	enable_reporting = true
@@ -67,6 +67,7 @@ If you want to build the chromium for debugging or to fuzz with libfuzzer change
 	is_java_debug=true
 	is_component_build=true
 	use_libfuzzer=true
+	
   
 
 GN build configuration
