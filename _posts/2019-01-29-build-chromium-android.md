@@ -44,14 +44,14 @@ Create args.gn
 	is_debug = false
 	is_official_build = true
 	symbol_level = 1
-        disable_fieldtrial_testing_config = true
+	disable_fieldtrial_testing_config = true
 	dfmify_dev_ui = false
 	disable_autofill_assistant_dfm = true
 	disable_tab_ui_dfm = true
 	ffmpeg_branding = "Chrome"
 	proprietary_codecs = true
 	is_cfi = true
-        use_cfi_cast = true
+	use_cfi_cast = true
 	enable_gvr_services = false
 	enable_remoting = false
 	enable_reporting = true
