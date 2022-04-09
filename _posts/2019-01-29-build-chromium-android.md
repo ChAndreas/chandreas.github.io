@@ -21,6 +21,7 @@ How to build chromium for Android.
 	git fetch --tags
 	git checkout 99.0.4844.73
 	gclient sync -D --with_branch_heads --with_tags --jobs 32
+	third_party/android_deps/fetch_all.py
 
 **Install dependencies**
 
