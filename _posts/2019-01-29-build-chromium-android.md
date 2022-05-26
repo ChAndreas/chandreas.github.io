@@ -77,11 +77,11 @@ GN build configuration
 
 The following command is used to build Trichrome for Android Q.
 
-	autoninja -C out/Default chrome_public_apk
+	autoninja -C out/Default trichrome_chrome_bundle
 
 The following command is used to build Monochrome, which provides both Chromium and the WebView for Android N - P
 
-	autoninja -C out/Default monochrome_public_apk
+	autoninja -C out/Default monochrome_public_bundle
 
 The apk that we have compiled is supported on Devices with minSdkVersion=24 (Nougat), if you have older device use one of the following command.
 
@@ -91,7 +91,7 @@ for devices with minSdkVersion=19 (KitKat) and above use
 
 or for devices with minSdkVersion=21 (Lollipop) and above use
 
-	autoninja -C out/Default chrome_modern_public_apk
+	autoninja -C out/Default chrome_modern_public_bundle
 
 **Install to Device**
 
