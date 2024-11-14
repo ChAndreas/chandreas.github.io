@@ -141,7 +141,6 @@ Inside, paste the following script:
 
 ```
 FROM ubuntu:24.04
-MAINTAINER Andreas Christoforou
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV UNBOUND_VERSION 1.22.0
@@ -152,7 +151,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN set -x \
 	&& apt update \
 	&& apt -y upgrade \
-	&& apt -y install build-essential libssl-dev libexpat-dev libsodium-dev libevent-dev openssl wget  knot-dnsutils \
+	&& apt -y install build-essential net-tools libssl-dev libexpat-dev libsodium-dev libevent-dev openssl wget knot-dnsutils \
 	&& groupadd -g 88 unbound \
 	&& useradd -c "Unbound DNS resolver" -d /var/lib/unbound -u 88 -g unbound -s /bin/false unbound \
 	&& wget http://www.unbound.net/downloads/unbound-${UNBOUND_VERSION}.tar.gz \
@@ -180,6 +179,7 @@ COPY ./unbound.sh /unbound.sh
 WORKDIR /etc/unbound/
 
 EXPOSE 853
+HEALTHCHECK CMD netstat -an | grep 853 > /dev/null; if [ 0 != $? ]; then exit 1; fi;
 
 CMD ["/unbound.sh"]
 ```	
@@ -204,6 +204,8 @@ services:
     restart: always
     ports:
       - "853:853"
+  healthcheck:
+    test: "netstat -an | grep 853 > /dev/null; if [ 0 != $? ]; then exit 1; fi;"
 ```
 
 **Run image**
