@@ -152,7 +152,7 @@ RUN set -x \
 	&& unbound-anchor /etc/unbound/root.key  ; true\
 	&& unbound-control-setup \
 	&& unbound-checkconf \
-	&& wget https://www.internic.net/domain/named.root -qO- | tee /etc/unbound/root.hints
+	&& wget https://www.internic.net/domain/named.root -qO- | tee /etc/unbound/root.hints \
 	&& rm -rf /unbound-${UNBOUND_VERSION}.tar.gz \
 	&& rm -rf unbound-* \
 	&& rm -rf /var/lib/apt/lists/* \
