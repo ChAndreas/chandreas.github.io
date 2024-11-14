@@ -47,18 +47,28 @@ server:
         directory: /etc/unbound/
         pidfile: "/var/run/unbound.pid"
         logfile: "/var/log/unbound.log"
+	log-local-actions: yes
+	log-queries: yes
+	log-replies: yes
+	log-servfail: yes
         verbosity: 1
         log-queries: yes
         num-threads: 4
+	so-rcvbuf: 2m
         verbosity: 2
-        interface: 0.0.0.0@853
+        interface: 0.0.0.0
+	port: 5353
+	do-ip4: yes
+	do-udp: yes
+	do-tcp: yes
+	do-ip6: yes
         access-control: 0.0.0.0/0 allow
         tls-service-key: "/etc/unbound/privkey.pem"
         tls-service-pem: "/etc/unbound/fullchain.pem"
         tls-port: 853
         minimal-responses: yes
-        cache-max-ttl: 14400
-        cache-min-ttl: 900
+        cache-min-ttl: 0
+	cache-max-ttl: 86400
         do-tcp: yes
         hide-identity: yes
         hide-version: yes
@@ -67,22 +77,28 @@ server:
         prefetch-key: yes
         qname-minimisation: yes
         incoming-num-tcp: 4096
+	ratelimit: 1000
         num-queries-per-thread: 4096
         rrset-roundrobin: yes
         use-caps-for-id: yes
+	aggressive-nsec: yes
+	edns-buffer-size: 1472
         harden-glue: yes
         harden-short-bufsize: yes
         harden-large-queries: yes
         harden-algo-downgrade: yes
         harden-dnssec-stripped: yes
         harden-below-nxdomain: yes
-        harden-referral-path: no
+        harden-referral-path: yes
         do-not-query-localhost: no
         statistics-cumulative: yes
         extended-statistics: yes
+	val-clean-additional: yes
+
 forward-zone:
         name: "."
         forward-tls-upstream: yes
+	forward-no-cache: no
         forward-addr: 8.8.8.8@853
         forward-addr: 8.8.4.4@853
         forward-addr: 1.1.1.1@853
@@ -136,6 +152,7 @@ RUN set -x \
 	&& unbound-anchor /etc/unbound/root.key  ; true\
 	&& unbound-control-setup \
 	&& unbound-checkconf \
+	&& wget https://www.internic.net/domain/named.root -qO- | tee /etc/unbound/root.hints
 	&& rm -rf /unbound-${UNBOUND_VERSION}.tar.gz \
 	&& rm -rf unbound-* \
 	&& rm -rf /var/lib/apt/lists/* \
