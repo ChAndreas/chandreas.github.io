@@ -72,6 +72,7 @@ server:
         do-tcp: yes
         hide-identity: yes
         hide-version: yes
+	hide-trustanchor: yes
         minimal-responses: yes
         prefetch: yes
         prefetch-key: yes
