@@ -110,9 +110,9 @@ for devices with minSdkVersion=26 and for local development (to avoid building W
         
 	or
 	
- 	out/Default/bin/chrome_public_apk install
+	out/Default/bin/chrome_public_apk install
 
-
+	
 **Running a test**
 
 	out/Default/bin/chrome_public_apk launch https://google.com
