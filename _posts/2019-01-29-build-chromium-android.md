@@ -31,7 +31,7 @@ How to build chromium for Android.
 
 **Install dependencies**
 
-	./build/install-build-deps-android.sh
+	build/install-build-deps.sh
 
 **Setting up the build**
 
@@ -82,7 +82,7 @@ If you want to build the chromium for debugging or to fuzz with libfuzzer change
 	is_java_debug = true
 	is_component_build = true
 	use_libfuzzer = true
- 	use_fuzzilli = true
+	use_fuzzilli = true
   
 
 GN build configuration
@@ -127,7 +127,8 @@ Debugging Java and c/c++ code
 C/C++ Debugger
 
 	out/Default/bin/monochrome_public_apk gdb
- 	out/Default/bin/chrome_public_apk lldb
+
+	out/Default/bin/chrome_public_apk lldb
 
 Java Debugger
 
