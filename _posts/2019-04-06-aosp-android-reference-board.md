@@ -23,7 +23,7 @@ repo sync -j`nproc`
 source build/envsetup.sh
 ```
 
-Fetch hikey960 vendor package
+**Fetch hikey960 vendor package**
 
 ```bash
 ./device/linaro/hikey/fetch-vendor-package.sh
@@ -87,4 +87,5 @@ sudo  ./device/linaro/hikey/installer/hikey960/flash-all.sh
 ```bash
 adb shell
 ```
-Installation is Ready: You can now proceed with your setup or configuration as needed.
+
+**Installation is Ready: You can now proceed with your setup or configuration as needed.**
