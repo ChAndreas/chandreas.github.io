@@ -6,7 +6,7 @@ date:	Sat Apr 06 19:30:54 EEST 2019
 
 **Building AOSP**
 
-This instruction will show you how to build AOSP for the Hikey960
+This instruction will show you how to build AOSP for the Hikey960.
 
 **Steps to Fetch AOSP Source:**
 
@@ -33,15 +33,15 @@ source build/envsetup.sh
 
 The following example uses the current AOSP from the master branch for device hikey960. You can select the build variant as follows:
 
-1. User: for production builds
-2. Userdebug: for development builds
-3. Eng: for development builds with faster build times
+1. user: for production builds
+2. userdebug: for development builds
+3. eng: for development builds with faster build times
 
 ```bash
 lunch hikey960-aosp_current-userdebug
 ```
 
-*You can enable hardware AddressSanitizer (asan) for memory error detection.*
+*You can enable hardware AddressSanitizer (ASAN) for memory error detection.*
 
 ```bash
 export SANITIZE_TARGET=hwaddress
@@ -53,7 +53,7 @@ export SANITIZE_TARGET=hwaddress
 m -j`nproc`
 ```
 
-**Flashing All Images to the Device:**
+**Flashing all images to the device:**
 
 1. Ensure the Device is in Fastboot Mode: Make sure the board is powered on with Switch 1 and Switch 3 set to ON.
 
@@ -61,13 +61,13 @@ m -j`nproc`
 
 3. Open a Terminal: On your host machine, open a terminal window.
 
-4. Verify Fastboot Connection: Run the following command to check if the device is recognized:
+4. Verify Fastboot Connection: Run the following command to check if the device is recognised:
 
 ```bash
 fastboot devices
 ```
 
-Flash the Images:
+**Flash the images:**
 
 ```bash
 sudo  ./device/linaro/hikey/installer/hikey960/flash-all.sh
@@ -76,7 +76,7 @@ sudo  ./device/linaro/hikey/installer/hikey960/flash-all.sh
 
 1. Turn off the device.
 
-2. Change Jumper Switch: Set Switch 1 to the ON position and ensure Switch 2 and Switch 3 is set to OFF. This will put the board into normal mode.
+2. Change Jumper Switch: Set Switch 1 to the ON position and ensure Switch 2 and Switch 3 are set to OFF. This will put the board into normal mode.
 
 3. Wait for the Board to Start: Allow some time for the board to fully boot up.
 
