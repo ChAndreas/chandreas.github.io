@@ -54,7 +54,7 @@ server:
 	so-rcvbuf: 2m
         verbosity: 2
         interface: 0.0.0.0
-	port: 5353
+	port: 853
 	do-ip4: yes
 	do-udp: yes
 	do-tcp: yes
