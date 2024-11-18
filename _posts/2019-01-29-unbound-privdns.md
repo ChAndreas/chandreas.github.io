@@ -193,7 +193,6 @@ vim docker-compose.yml
 Inside, paste the following script:
 
 ```yaml
-version: '3'
 services:
   unbound-tls:
     image: unbound-tls:1.22.0
@@ -201,10 +200,8 @@ services:
     restart: always
     ports:
       - "853:853"
-  healthcheck:
-    test: "netstat -an | grep 853 > /dev/null; if [ 0 != $? ]; then exit 1; fi;"
 ```
 
 **Run image**
 
-	docker-compose up -d
+	docker compose up -d
