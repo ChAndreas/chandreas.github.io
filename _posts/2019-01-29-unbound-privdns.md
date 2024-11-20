@@ -45,42 +45,41 @@ server:
         directory: /etc/unbound/
         pidfile: "/var/run/unbound.pid"
         logfile: "/var/log/unbound.log"
-	       log-local-actions: yes
-	       log-queries: yes
-	       log-replies: yes
-	       log-servfail: yes
+        log-local-actions: yes
+        log-queries: yes
+        log-replies: yes
+        log-servfail: yes
         verbosity: 1
         log-queries: yes
         num-threads: 4
-	       so-rcvbuf: 2m
+        so-rcvbuf: 2m
         verbosity: 2
         interface: 0.0.0.0@443
-	       do-ip4: yes
-	       do-udp: yes
-	       do-tcp: yes
-	       do-ip6: yes
+        do-ip4: yes
+        do-udp: yes
+        do-tcp: yes
+        do-ip6: yes
         access-control: 0.0.0.0/0 allow
         tls-service-key: "/etc/unbound/privkey.pem"
         tls-service-pem: "/etc/unbound/fullchain.pem"
         tls-port: 853
         minimal-responses: yes
         cache-min-ttl: 0
-	       cache-max-ttl: 86400
-        do-tcp: yes
+        cache-max-ttl: 86400
         hide-identity: yes
         hide-version: yes
-	       hide-trustanchor: yes
+        hide-trustanchor: yes
         minimal-responses: yes
         prefetch: yes
         prefetch-key: yes
         qname-minimisation: yes
         incoming-num-tcp: 4096
-	       ratelimit: 1000
+        ratelimit: 1000
         num-queries-per-thread: 4096
         rrset-roundrobin: yes
         use-caps-for-id: yes
-	       aggressive-nsec: yes
-	       edns-buffer-size: 1472
+        aggressive-nsec: yes
+        edns-buffer-size: 1472
         harden-glue: yes
         harden-short-bufsize: yes
         harden-large-queries: yes
@@ -91,22 +90,22 @@ server:
         do-not-query-localhost: no
         statistics-cumulative: yes
         extended-statistics: yes
-	       val-clean-additional: yes
-	       ip-dscp: 18
-	       private-address: 10.0.0.0/8
-	       private-address: 172.16.0.0/12
-	       private-address: 192.168.0.0/16
-	       private-address: fd00::/8
-	       private-address: 169.254.0.0/16
-	       private-address: fe80::/10
-	       private-address: 127.0.0.0/8
-	       private-address: ::1/128
-	       private-address: ::ffff:0:0/96
+        val-clean-additional: yes
+        ip-dscp: 18
+        private-address: 10.0.0.0/8
+        private-address: 172.16.0.0/12
+        private-address: 192.168.0.0/16
+        private-address: fd00::/8
+        private-address: 169.254.0.0/16
+        private-address: fe80::/10
+        private-address: 127.0.0.0/8
+        private-address: ::1/128
+        private-address: ::ffff:0:0/96
 								
 forward-zone:
         name: "."
         forward-tls-upstream: yes
-	       forward-no-cache: no
+        forward-no-cache: no
         forward-addr: 8.8.8.8@853
         forward-addr: 8.8.4.4@853
         forward-addr: 1.1.1.1@853
