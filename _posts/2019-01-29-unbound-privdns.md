@@ -198,7 +198,7 @@ services:
     restart: always
     ports:
       - "853:853"
-						- "443:443"
+      - "443:443"
 ```
 
 **Run image**
