@@ -7,7 +7,7 @@ date:	Tue Jan 29 17:30:54 EEST 2019
 How to create your own Private DNS Server for Android running on Docker.
 
 **Download and install Docker**
-
+'''bash
 	sudo apt-get update
   	for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
 	sudo apt-get install ca-certificates curl
@@ -20,18 +20,18 @@ How to create your own Private DNS Server for Android running on Docker.
   	sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 	sudo apt-get update
   	sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-compose
-
+'''
 **Create Let's Encrypt Certificate**
-
-	sudo apt-get update
-	sudo apt-get -y install certbot
-	sudo certbot certonly --no-eff-emai --agree-tos --email <your email> --standalone --non-interactive --domain <your domain>
-	cp /etc/letsencrypt/live/<your domain>/privkey.pem .
-	cp /etc/letsencrypt/live/<your domain>/fullchain.pem .
-
+```bash
+sudo apt-get update
+sudo apt-get -y install certbot
+sudo certbot certonly --no-eff-emai --agree-tos --email <your email> --standalone --non-interactive --domain <your domain>
+cp /etc/letsencrypt/live/<your domain>/privkey.pem .
+cp /etc/letsencrypt/live/<your domain>/fullchain.pem .
+```
 **Unbound Configuration**
 
-```
+```bash
 vim unbound.conf
 ```
 
@@ -117,7 +117,7 @@ remote-control:
 
 **CMD Script**
 
-```
+```bash
 vim unbound.sh
 ```
 
@@ -128,13 +128,13 @@ vim unbound.sh
 
 **Dockerfile**
 
-```
+```bash
 vim Dockerfile
 ```
 
 Inside, paste the following script:
 
-```
+```bash
 FROM ubuntu:24.04
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -173,18 +173,18 @@ COPY ./unbound.sh /unbound.sh
 
 WORKDIR /etc/unbound/
 
-EXPOSE 853
+EXPOSE 853,443
 HEALTHCHECK CMD netstat -an | grep 853 > /dev/null; if [ 0 != $? ]; then exit 1; fi;
 
 CMD ["/unbound.sh"]
 ```	
 **Build Image**
-
-	docker build -t unbound-tls:1.22.0 .
-
+```bash
+docker build -t unbound-tls:1.22.0 .
+```
 **Docker Compose**
 
-```
+```bash
 vim docker-compose.yml
 ```
 
@@ -198,8 +198,10 @@ services:
     restart: always
     ports:
       - "853:853"
+						- "443:443"
 ```
 
 **Run image**
-
+```bash
 	docker compose up -d
+```
