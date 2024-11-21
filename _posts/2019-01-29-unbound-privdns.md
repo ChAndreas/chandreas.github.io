@@ -41,7 +41,7 @@ Inside, paste the following script:
 ```bash
 server:
         username: "unbound"
-        chroot: ""
+        chroot: "/etc/unbound"
         directory: /etc/unbound/
         pidfile: "/var/run/unbound.pid"
         logfile: "/var/log/unbound.log"
