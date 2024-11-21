@@ -46,7 +46,7 @@ server:
         pidfile: "/var/run/unbound.pid"
         logfile: "/var/log/unbound/unbound.log"
         auto-trust-anchor-file: "/etc/unbound/root.key"
-	root-hints: "/etc/unbound/files/root.hints"
+	root-hints: "/etc/unbound/root.hints"
         log-local-actions: yes
         log-queries: yes
         log-replies: yes
@@ -61,8 +61,8 @@ server:
         do-tcp: yes
         do-ip6: yes
         access-control: 0.0.0.0/0 allow
-        tls-service-key: "/etc/unbound/certs/privkey.pem"
-        tls-service-pem: "/etc/unbound/certs/fullchain.pem"
+        tls-service-key: "/etc/unbound/privkey.pem"
+        tls-service-pem: "/etc/unbound/fullchain.pem"
         tls-port: 853
         minimal-responses: yes
         cache-min-ttl: 0
@@ -160,11 +160,11 @@ RUN set -x \
 	&& make \
 	&& make install \
 	&& mv -v /usr/sbin/unbound-host /usr/bin/ \
-	&& unbound-anchor -a /etc/unbound/root.key  \
+	&& unbound-anchor -a /etc/unbound/root.key; true\
 	&& unbound-control-setup \
 	&& unbound-checkconf \
-	&& wget https://www.internic.net/domain/named.root -qO- | tee /etc/unbound/files/root.hints \
-        && mkdir /var/log/unbound/ \
+	&& wget https://www.internic.net/domain/named.root -qO- | tee /etc/unbound/root.hints \
+        && mkdir -p /var/log/unbound/ \
         && touch /var/log/unbound/unbound.log \
         && sudo chown unbound:unbound /var/log/unbound/unbound.log \
 	&& rm -rf /unbound-${UNBOUND_VERSION}.tar.gz \
@@ -173,8 +173,8 @@ RUN set -x \
 	&& apt-get clean
 
 COPY ./unbound.conf /etc/unbound/unbound.conf
-COPY ./privkey.pem /etc/unbound/certs/privkey.pem
-COPY ./fullchain.pem /etc/unbound/certs/fullchain.pem
+COPY ./privkey.pem /etc/unbound/privkey.pem
+COPY ./fullchain.pem /etc/unbound/fullchain.pem
 COPY ./unbound.sh /unbound.sh
 
 WORKDIR /etc/unbound/
