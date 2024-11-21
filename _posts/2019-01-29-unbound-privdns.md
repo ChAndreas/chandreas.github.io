@@ -173,7 +173,7 @@ COPY ./unbound.sh /unbound.sh
 
 WORKDIR /etc/unbound/
 
-EXPOSE 853,443
+EXPOSE 853 443
 HEALTHCHECK CMD netstat -an | grep 853 > /dev/null; if [ 0 != $? ]; then exit 1; fi;
 
 CMD ["/unbound.sh"]
