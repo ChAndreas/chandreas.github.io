@@ -41,7 +41,7 @@ Inside, paste the following script:
 ```bash
 server:
         username: "unbound"
-        chroot: "/etc/unbound"
+        chroot: ""
         directory: /etc/unbound/
         pidfile: "/var/run/unbound.pid"
         logfile: "/var/log/unbound/unbound.log"
@@ -166,7 +166,8 @@ RUN set -x \
 	&& wget https://www.internic.net/domain/named.root -qO- | tee /etc/unbound/root.hints \
         && mkdir -p /var/log/unbound/ \
         && touch /var/log/unbound/unbound.log \
-        && sudo chown unbound:unbound /var/log/unbound/unbound.log \
+        && chown unbound:unbound -R /var/log/unbound/ \
+        && chown unbound:unbound -R /etc/unbound/ \
 	&& rm -rf /unbound-${UNBOUND_VERSION}.tar.gz \
 	&& rm -rf unbound-* \
 	&& rm -rf /var/lib/apt/lists/* \
