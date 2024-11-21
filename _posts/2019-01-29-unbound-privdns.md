@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Private DNS Server for Android"
+title: "DoH/DoT DNS Server"
 date:	Tue Jan 29 17:30:54 EEST 2019
 ---
 
-How to create your own Private DNS Server for Android running on Docker.
+How to create your own DoH/DoT DNS Server running on Docker.
 
 **Download and install Docker**
 ```bash
