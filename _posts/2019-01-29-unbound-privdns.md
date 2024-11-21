@@ -44,7 +44,9 @@ server:
         chroot: "/etc/unbound"
         directory: /etc/unbound/
         pidfile: "/var/run/unbound.pid"
-        logfile: "/var/log/unbound.log"
+        logfile: "/var/log/unbound/unbound.log"
+        auto-trust-anchor-file: "/etc/unbound/root.key"
+	root-hints: "/etc/unbound/files/root.hints"
         log-local-actions: yes
         log-queries: yes
         log-replies: yes
@@ -53,26 +55,27 @@ server:
         log-queries: yes
         num-threads: 4
         so-rcvbuf: 2m
-        verbosity: 2
         interface: 0.0.0.0@443
         do-ip4: yes
         do-udp: yes
         do-tcp: yes
         do-ip6: yes
         access-control: 0.0.0.0/0 allow
-        tls-service-key: "/etc/unbound/privkey.pem"
-        tls-service-pem: "/etc/unbound/fullchain.pem"
+        tls-service-key: "/etc/unbound/certs/privkey.pem"
+        tls-service-pem: "/etc/unbound/certs/fullchain.pem"
         tls-port: 853
         minimal-responses: yes
         cache-min-ttl: 0
         cache-max-ttl: 86400
         hide-identity: yes
+	identity: "Server"
         hide-version: yes
         hide-trustanchor: yes
         minimal-responses: yes
         prefetch: yes
         prefetch-key: yes
         qname-minimisation: yes
+	deny-any: yes
         incoming-num-tcp: 4096
         ratelimit: 1000
         num-queries-per-thread: 4096
@@ -137,16 +140,16 @@ Inside, paste the following script:
 ```bash
 FROM ubuntu:24.04
 
-ENV DEBIAN_FRONTEND noninteractive
-ENV UNBOUND_VERSION 1.22.0
-ENV UNBOUND_SHA256 c5dd1bdef5d5685b2cedb749158dd152c52d44f65529a34ac15cd88d4b1b3d43
+ENV DEBIAN_FRONTEND=noninteractive
+ENV UNBOUND_VERSION=1.22.0
+ENV UNBOUND_SHA256=c5dd1bdef5d5685b2cedb749158dd152c52d44f65529a34ac15cd88d4b1b3d43
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 RUN set -x \
 	&& apt update \
 	&& apt -y upgrade \
-	&& apt -y install build-essential net-tools libnghttp2-dev libssl-dev libexpat-dev libsodium-dev libevent-dev openssl wget knot-dnsutils \
+	&& apt -y install build-essential flex bison net-tools libnghttp2-dev libssl-dev libexpat-dev libsodium-dev libevent-dev openssl wget knot-dnsutils libmnl-dev  \
 	&& groupadd -g 88 unbound \
 	&& useradd -c "Unbound DNS resolver" -d /var/lib/unbound -u 88 -g unbound -s /bin/false unbound \
 	&& wget http://www.unbound.net/downloads/unbound-${UNBOUND_VERSION}.tar.gz \
@@ -157,18 +160,21 @@ RUN set -x \
 	&& make \
 	&& make install \
 	&& mv -v /usr/sbin/unbound-host /usr/bin/ \
-	&& unbound-anchor /etc/unbound/root.key  ; true\
+	&& unbound-anchor -a /etc/unbound/root.key  \
 	&& unbound-control-setup \
 	&& unbound-checkconf \
-	&& wget https://www.internic.net/domain/named.root -qO- | tee /etc/unbound/root.hints \
+	&& wget https://www.internic.net/domain/named.root -qO- | tee /etc/unbound/files/root.hints \
+        && mkdir /var/log/unbound/ \
+        && touch /var/log/unbound/unbound.log \
+        && sudo chown unbound:unbound /var/log/unbound/unbound.log \
 	&& rm -rf /unbound-${UNBOUND_VERSION}.tar.gz \
 	&& rm -rf unbound-* \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& apt-get clean
 
 COPY ./unbound.conf /etc/unbound/unbound.conf
-COPY ./privkey.pem /etc/unbound/privkey.pem
-COPY ./fullchain.pem /etc/unbound/fullchain.pem
+COPY ./privkey.pem /etc/unbound/certs/privkey.pem
+COPY ./fullchain.pem /etc/unbound/certs/fullchain.pem
 COPY ./unbound.sh /unbound.sh
 
 WORKDIR /etc/unbound/
