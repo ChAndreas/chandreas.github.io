@@ -25,30 +25,30 @@ char *p = new char[20];
 ARM implementated the memory tagging hardware support with tag size of 4-bit and tag granularity of 16-bytes and they have introduced some of the following new instructions
 
 IRG - Insert Random Tag inserts a random logical address tag into the address in the first source register and writes the result to the destination register.
-
-    IRG Xd|SP , Xn|SP; // irg  x0, sp;
-
+```bash
+IRG Xd|SP , Xn|SP; // irg  x0, sp;
+```
 CMPP - Compare with TAG subtracts the 56-bit address held in the second source register from the 56-bit address held in the first source register, updates the condition flags based on the result of the subtraction, and discards the result.
-
-	CMPP <Xn|SP>, <Xm|SP> 
-
+```bash
+CMPP <Xn|SP>, <Xm|SP> 
+```
 ADDG - Add with Tag adds an immediate value scaled by the Tag granule to the address in the source register, modifies the Logical Address Tag of the address using an immediate value, and writes the result to the destination register. Tags specified in GCR_EL1 system register.
-
-	ADDG <Xd|SP>, <Xn|SP>, #<uimm6>, #<uimm4>; // addg  x19, x0, #16, #1
-
+```bash
+ADDG <Xd|SP>, <Xn|SP>, #<uimm6>, #<uimm4>; // addg  x19, x0, #16, #1
+```
 STG - Store Allocation Tag stores an Allocation Tag to memory. The address used for the store is calculated from the base register and an immediate signed offset scaled by the Tag granule. The Allocation Tag is calculated from the Logical Address Tag in the source register.
-
-	STG [<Xn|SP>], #<simm>; // stg  x0, [x0]
-
+```bash
+STG [<Xn|SP>], #<simm>; // stg  x0, [x0]
+```
 LDG - Load Allocation Tag loads an Allocation Tag from a memory address, generates a Logical Address Tag from the Allocation Tag and merges it into the destination register. The address used for the load is calculated from the base register and an immediate signed offset scaled by the Tag granule.
-
-	LDG <Xt>, [<Xn|SP>{, #<simm>}]
-
+```bash
+LDG <Xt>, [<Xn|SP>{, #<simm>}]
+```
 
 ST2G - Store Allocation Tags stores an Allocation Tag to two Tag granules of memory. The address used for the store is calculated from the base register and an immediate signed offset scaled by the Tag granule. The Allocation Tag is calculated from the Logical Address Tag in the source register.
-
-	ST2G <Xt|SP>, [<Xn|SP>], #<simm>; // st2g  x8, [sp], #32
-
+```bash
+ST2G <Xt|SP>, [<Xn|SP>], #<simm>; // st2g  x8, [sp], #32
+```
 
 New System Registers for tagging
 
