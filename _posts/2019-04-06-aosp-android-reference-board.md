@@ -70,7 +70,7 @@ fastboot devices
 **Flash the images:**
 
 ```bash
-sudo  ./device/linaro/hikey/installer/hikey960/flash-all.sh
+./device/linaro/hikey/installer/hikey960/flash-all.sh
 ```
 **Switching to Normal Mode and Connecting via ADB:**
 
