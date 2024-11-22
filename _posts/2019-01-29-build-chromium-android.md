@@ -111,25 +111,25 @@ out/Default/bin/trichrome_chrome_bundle install
 	
 **Running a test**
 ```bash
-out/Default/bin/chrome_public_apk launch https://google.com
+out/Default/bin/trichrome_chrome_bundle launch https://google.com
 ```
 **Logging and debugging**
 
 You can see the logs with adb logcat when you will install the chrome apk or with
 ```bash
-out/Default/bin/monochrome_public_apk logcat [-v]
+out/Default/bin/trichrome_chrome_bundle logcat [-v]
 ```
 Debugging Java and c/c++ code
 
 C/C++ Debugger
 ```bash
-out/Default/bin/monochrome_public_apk gdb
+out/Default/bin/trichrome_chrome_bundle gdb
 
-out/Default/bin/chrome_public_apk lldb
+out/Default/bin/trichrome_chrome_bundle lldb
 ```
 Java Debugger
 ```bash
-out/Default/bin/monochrome_public_apk run --wait-for-java-debugger
+out/Default/bin/trichrome_chrome_bundle run --wait-for-java-debugger
 ```
 Symbolizing Crash Stacks and Tombstones (C++)
 ```bash
