@@ -11,9 +11,8 @@ This instruction will show you how to build AOSP for the Hikey960.
 **Steps to Fetch AOSP Source:**
 
 ```bash
-mkdir /home/$USER/aosp
+mkdir ~/aosp
 repo init -u https://android.googlesource.com/platform/manifest -b master
-sudo cp /home/$USER/aosp/.repo/repo/repo /usr/bin/repo
 repo sync -j`nproc`
 ```
 
