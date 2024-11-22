@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Building Chromium for Android"
-date:	Tue Jan 29 17:32:51 EEST 2019
+date:	Tue Jan 29 17:32:51 EEST 2020
 ---
 
 How to build chromium for Android.
