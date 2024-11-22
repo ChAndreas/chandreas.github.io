@@ -106,11 +106,7 @@ autoninja -C out/Default chrome_public_apk
 
 **Install to Device**
 ```bash
-adb install out/Default/apks/MonochromePublic.apk
-        
-or
-	
-out/Default/bin/chrome_public_apk install
+out/Default/bin/trichrome_chrome_bundle install
 ```
 	
 **Running a test**
