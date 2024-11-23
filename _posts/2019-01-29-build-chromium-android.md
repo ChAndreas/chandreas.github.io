@@ -27,7 +27,6 @@ gclient runhooks
 git fetch --tags
 git checkout VERSION
 gclient sync -D --with_branch_heads --with_tags --jobs 32
-third_party/android_deps/fetch_all.py
 ```
 **Install dependencies**
 ```bash
