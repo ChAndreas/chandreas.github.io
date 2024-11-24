@@ -57,13 +57,11 @@ server:
         so-rcvbuf: 2m
         interface: 0.0.0.0@443
         do-ip4: yes
-        do-udp: yes
         do-tcp: yes
         do-ip6: yes
         access-control: 0.0.0.0/0 allow
         tls-service-key: "/etc/unbound/privkey.pem"
         tls-service-pem: "/etc/unbound/fullchain.pem"
-        tls-port: 853
         minimal-responses: yes
         cache-min-ttl: 0
         cache-max-ttl: 86400
