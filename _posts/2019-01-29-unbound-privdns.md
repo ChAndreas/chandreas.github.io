@@ -41,12 +41,10 @@ Inside, paste the following script:
 ```bash
 server:
         username: "unbound"
-        chroot: ""
+        chroot: "/etc/unbound"
         directory: /etc/unbound/
         pidfile: "/var/run/unbound.pid"
-        logfile: "/var/log/unbound/unbound.log"
-        auto-trust-anchor-file: "/etc/unbound/root.key"
-	root-hints: "/etc/unbound/root.hints"
+        logfile: "/var/log/unbound.log"
         log-local-actions: yes
         log-queries: yes
         log-replies: yes
@@ -55,6 +53,7 @@ server:
         log-queries: yes
         num-threads: 4
         so-rcvbuf: 2m
+        verbosity: 2
         interface: 0.0.0.0@443
         do-ip4: yes
         do-tcp: yes
@@ -66,14 +65,12 @@ server:
         cache-min-ttl: 0
         cache-max-ttl: 86400
         hide-identity: yes
-	identity: "Server"
         hide-version: yes
         hide-trustanchor: yes
         minimal-responses: yes
         prefetch: yes
         prefetch-key: yes
         qname-minimisation: yes
-	deny-any: yes
         incoming-num-tcp: 4096
         ratelimit: 1000
         num-queries-per-thread: 4096
@@ -147,7 +144,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN set -x \
 	&& apt update \
 	&& apt -y upgrade \
-	&& apt -y install build-essential flex bison net-tools libnghttp2-dev libssl-dev libexpat-dev libsodium-dev libevent-dev openssl wget knot-dnsutils libmnl-dev  \
+	&& apt -y install build-essential net-tools libnghttp2-dev libssl-dev libexpat-dev libsodium-dev libevent-dev openssl wget knot-dnsutils \
 	&& groupadd -g 88 unbound \
 	&& useradd -c "Unbound DNS resolver" -d /var/lib/unbound -u 88 -g unbound -s /bin/false unbound \
 	&& wget http://www.unbound.net/downloads/unbound-${UNBOUND_VERSION}.tar.gz \
@@ -158,14 +155,10 @@ RUN set -x \
 	&& make \
 	&& make install \
 	&& mv -v /usr/sbin/unbound-host /usr/bin/ \
-	&& unbound-anchor -a /etc/unbound/root.key; true\
+	&& unbound-anchor /etc/unbound/root.key  ; true\
 	&& unbound-control-setup \
 	&& unbound-checkconf \
 	&& wget https://www.internic.net/domain/named.root -qO- | tee /etc/unbound/root.hints \
-        && mkdir -p /var/log/unbound/ \
-        && touch /var/log/unbound/unbound.log \
-        && chown unbound:unbound -R /var/log/unbound/ \
-        && chown unbound:unbound -R /etc/unbound/ \
 	&& rm -rf /unbound-${UNBOUND_VERSION}.tar.gz \
 	&& rm -rf unbound-* \
 	&& rm -rf /var/lib/apt/lists/* \
@@ -178,8 +171,8 @@ COPY ./unbound.sh /unbound.sh
 
 WORKDIR /etc/unbound/
 
-EXPOSE 853 443
-HEALTHCHECK CMD netstat -an | grep 853 > /dev/null; if [ 0 != $? ]; then exit 1; fi;
+EXPOSE 443
+HEALTHCHECK CMD netstat -an | grep 443 > /dev/null; if [ 0 != $? ]; then exit 1; fi;
 
 CMD ["/unbound.sh"]
 ```	
@@ -202,7 +195,6 @@ services:
     container_name: unbound-tls
     restart: always
     ports:
-      - "853:853"
       - "443:443"
 ```
 
